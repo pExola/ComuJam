@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private int posCameraAtrasReal;
     private GameObject currentArrow;
     private Animator animacao;
+    private bool estaParado = true;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -51,17 +52,17 @@ public class PlayerController : MonoBehaviour
                 agent.SetDestination(hit.point);
 
                 SpawnArrow(hit.point);
-                animacao.SetBool("isWalking", true);
+                PlayAnimation("Walking");
 
+                estaParado = false;
             }
         }
-        if (agent.velocity.x == 0 && agent.velocity.y == 0 && agent.velocity.z == 0)
+        if (agent.velocity.x == 0 && agent.velocity.y == 0 && agent.velocity.z == 0 && !estaParado)
         {
-            // Retorna para a animação Idle
-            animacao.SetBool("isWalking", false);
+            PlayAnimation("Drunk Idle");
         }
 
-        Debug.Log($"{agent.velocity.x} {agent.velocity.y} {agent.velocity.z} ");
+        Debug.Log($"{agent.velocity.x} {agent.velocity.y} {agent.velocity.z}");
     }
 
     void atualizarPosicaoCamera()
@@ -103,5 +104,10 @@ public class PlayerController : MonoBehaviour
 
         // Instancia o prefab da seta
         currentArrow= Instantiate(arrow, arrowPosition, Quaternion.identity);
+    }
+    void PlayAnimation(string animationName)
+    {
+        // Reinicia e força a animação desejada
+        animacao.Play(animationName);
     }
 }
