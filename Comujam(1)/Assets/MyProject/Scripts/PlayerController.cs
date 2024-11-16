@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
                 agent.SetDestination(hit.point);
 
                 SpawnArrow(hit.point);
+                PlayAnimation("Walking");
+                estaParado = false;
 
                 cursorOnGround = true;
             }
@@ -62,15 +64,7 @@ public class PlayerController : MonoBehaviour
                 cursorOnGround = false;
             }
         }
-        else 
-        {
-            cursorOnGround=false;
-        }
-                PlayAnimation("Walking");
-
-                estaParado = false;
-            }
-        }
+                
         if (agent.velocity.x == 0 && agent.velocity.y == 0 && agent.velocity.z == 0 && !estaParado)
         {
             PlayAnimation("Drunk Idle");
@@ -121,10 +115,10 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public bool CursorOnGround() 
+    public bool CursorOnGround()
     {
         return cursorOnGround;
-
+    }
     void PlayAnimation(string animationName)
     {
         // Reinicia e força a animação desejada
