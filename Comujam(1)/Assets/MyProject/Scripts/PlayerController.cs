@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public int posCameraAtras = 10;
     private int posCameraAtrasReal;
     private GameObject currentArrow;
+    public bool cursorOnGround;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
     }
     void andarClickando()
     {
+        
         if (Input.GetMouseButtonDown(0)) // Botão esquerdo do mouse
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -48,7 +50,16 @@ public class PlayerController : MonoBehaviour
             {
                 agent.SetDestination(hit.point);
                 SpawnArrow(hit.point);
+                cursorOnGround = true;
             }
+            else
+            {
+                cursorOnGround = false;
+            }
+        }
+        else 
+        {
+            cursorOnGround=false;
         }
     }
 
@@ -91,5 +102,10 @@ public class PlayerController : MonoBehaviour
 
         // Instancia o prefab da seta
         currentArrow= Instantiate(arrow, arrowPosition, Quaternion.identity);
+    }
+
+    public bool CursorOnGround() 
+    {
+        return cursorOnGround;
     }
 }
