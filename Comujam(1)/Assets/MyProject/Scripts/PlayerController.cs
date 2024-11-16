@@ -48,15 +48,11 @@ public class PlayerController : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-
+            
             if (Physics.Raycast(ray, out hit))
             {
                 agent.SetDestination(hit.point);
-
                 SpawnArrow(hit.point);
-                PlayAnimation("Walking");
-                estaParado = false;
-
                 cursorOnGround = true;
             }
             else
@@ -65,9 +61,13 @@ public class PlayerController : MonoBehaviour
             }
         }
                 
-        if (agent.velocity.x == 0 && agent.velocity.y == 0 && agent.velocity.z == 0 && !estaParado)
+        if (agent.velocity.magnitude == 0 )
         {
-            PlayAnimation("Drunk Idle");
+            animacao.SetBool("isWalking", false);
+        }
+        else
+        {
+            animacao.SetBool("isWalking", true);
         }
 
         Debug.Log($"{agent.velocity.x} {agent.velocity.y} {agent.velocity.z}");
@@ -119,9 +119,5 @@ public class PlayerController : MonoBehaviour
     {
         return cursorOnGround;
     }
-    void PlayAnimation(string animationName)
-    {
-        // Reinicia e força a animação desejada
-        animacao.Play(animationName);
-    }
+
 }
