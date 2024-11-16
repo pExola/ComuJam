@@ -426,8 +426,9 @@ GameObject:
   - component: {fileID: 1418823854}
   - component: {fileID: 1418823853}
   - component: {fileID: 1418823858}
+  - component: {fileID: 1418823860}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -445,8 +446,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e5adbbc58b7004f99ae75fb08ff8fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 963194225}
-  velScrollCamera: 5
 --- !u!65 &1418823854
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -555,6 +554,22 @@ NavMeshAgent:
   m_BaseOffset: 0.50000006
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1418823860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418823852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9de42c8b8a47d0a44814dd2286f0814e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrow: {fileID: 8996009061323926766, guid: a96f0bd08bf0b814f8d11814647f20cc, type: 3}
+  camera: {fileID: 963194225}
+  velScrollCamera: 2
+  posCameraAtras: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
