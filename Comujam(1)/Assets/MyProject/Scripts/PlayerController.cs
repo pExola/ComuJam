@@ -10,13 +10,15 @@ public class PlayerController : MonoBehaviour
     public GameObject arrow;
     private NavMeshAgent agent;
     public GameObject camera;
-    public int velScrollCamera = 2;
+    public int velScrollCamera = 2, maxDistCamera=50,minDistCamera=20;
     public int posCameraAtras = 10;
     private int posCameraAtrasReal;
     private GameObject currentArrow;
+    private Animator animacao;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animacao = GetComponent<Animator>();
         posCameraAtrasReal = posCameraAtras;
     }
 
@@ -47,9 +49,19 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 agent.SetDestination(hit.point);
+
                 SpawnArrow(hit.point);
+                animacao.SetBool("isWalking", true);
+
             }
         }
+        if (agent.velocity.x == 0 && agent.velocity.y == 0 && agent.velocity.z == 0)
+        {
+            // Retorna para a animação Idle
+            animacao.SetBool("isWalking", false);
+        }
+
+        Debug.Log($"{agent.velocity.x} {agent.velocity.y} {agent.velocity.z} ");
     }
 
     void atualizarPosicaoCamera()
@@ -58,7 +70,7 @@ public class PlayerController : MonoBehaviour
         
         if (scroll > 0f)
         {
-            if (this.camera.transform.position.y + velScrollCamera <= 50)
+            if (this.camera.transform.position.y + velScrollCamera <= maxDistCamera)
             {
                 this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y + velScrollCamera, this.transform.position.z);
                 posCameraAtrasReal += velScrollCamera;
@@ -66,7 +78,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (scroll < 0f)
         {
-            if (this.camera.transform.position.y - velScrollCamera >= 20)
+            if (this.camera.transform.position.y - velScrollCamera >= minDistCamera)
             {
                 this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y - velScrollCamera, this.transform.position.z);
                 posCameraAtrasReal -= velScrollCamera;
