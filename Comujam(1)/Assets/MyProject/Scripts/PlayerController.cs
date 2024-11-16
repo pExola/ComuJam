@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public int posCameraAtras = 10;
     private int posCameraAtrasReal;
     private GameObject currentArrow;
+    public bool cursorOnGround;
     private Animator animacao;
     private bool estaParado = true;
     void Start()
@@ -42,7 +43,8 @@ public class PlayerController : MonoBehaviour
     }
     void andarClickando()
     {
-        if (Input.GetMouseButtonDown(0)) // Bot„o esquerdo do mouse
+        
+        if (Input.GetMouseButtonDown(0)) // Bot√£o esquerdo do mouse
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -52,6 +54,18 @@ public class PlayerController : MonoBehaviour
                 agent.SetDestination(hit.point);
 
                 SpawnArrow(hit.point);
+
+                cursorOnGround = true;
+            }
+            else
+            {
+                cursorOnGround = false;
+            }
+        }
+        else 
+        {
+            cursorOnGround=false;
+        }
                 PlayAnimation("Walking");
 
                 estaParado = false;
@@ -95,7 +109,7 @@ public class PlayerController : MonoBehaviour
 
     void SpawnArrow(Vector3 position)
     {
-        // Ajusta a posiÁ„o para que a seta fique um pouco acima do ch„o
+        // Ajusta a posi√ß√£o para que a seta fique um pouco acima do ch√£o
         if(currentArrow != null)
         {
             Destroy(currentArrow);
@@ -105,9 +119,15 @@ public class PlayerController : MonoBehaviour
         // Instancia o prefab da seta
         currentArrow= Instantiate(arrow, arrowPosition, Quaternion.identity);
     }
+
+
+    public bool CursorOnGround() 
+    {
+        return cursorOnGround;
+
     void PlayAnimation(string animationName)
     {
-        // Reinicia e forÁa a animaÁ„o desejada
+        // Reinicia e for√ßa a anima√ß√£o desejada
         animacao.Play(animationName);
     }
 }
