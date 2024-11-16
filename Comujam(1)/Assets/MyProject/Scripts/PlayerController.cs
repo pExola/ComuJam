@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,11 +18,14 @@ public class PlayerController : MonoBehaviour
     public bool cursorOnGround;
     private Animator animacao;
     private bool estaParado = true;
+    public List<GameObject> inventario;
+    public int capacidadeInventario = 30;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animacao = GetComponent<Animator>();
         posCameraAtrasReal = posCameraAtras;
+        inventario = new List<GameObject>(capacidadeInventario);
     }
 
     // Update is called once per frame
