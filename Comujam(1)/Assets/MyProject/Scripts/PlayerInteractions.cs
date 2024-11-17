@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Threading.Tasks;
 public class PlayerInteractions : MonoBehaviour
 {
     PlayerController controller;
@@ -34,7 +34,7 @@ public class PlayerInteractions : MonoBehaviour
                     interactRoutine = Interact(interactable);
                     StartCoroutine(interactRoutine);
                     Debug.Log("Obj");
-                    animator.SetBool("onAction", true);
+                    
                     //animator.SetTrigger("Acao");
 
                 }
@@ -72,6 +72,8 @@ public class PlayerInteractions : MonoBehaviour
             {
                 walking = false;
                 controller.agent.SetDestination(transform.position);
+                animator.SetBool("onAction", true);
+                voltar();
             }
         }
         interactable.Interact();
@@ -88,5 +90,10 @@ public class PlayerInteractions : MonoBehaviour
             currentInteractable.isInteracting = false;
             currentInteractable = null;
         }
+    }
+    public async Task voltar()
+    {
+        await Task.Delay(1000);
+        animator.SetBool("onAction", false);
     }
 }

@@ -200,27 +200,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5259767453272010162, guid: b65fceb6abf962745b817266bf5f8c24, type: 3}
   m_PrefabInstance: {fileID: 981106577}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &350057261
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 350057259}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.036538616, y: 0.015054504, z: 0.03230195}
-  m_Center: {x: 0.017907176, y: -0.036722194, z: 0.016457925}
 --- !u!114 &350057265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +219,28 @@ MonoBehaviour:
   player: {fileID: 1036626400}
   agent: {fileID: 1036626403}
   cena: Taverna
+--- !u!64 &350057267
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350057259}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8568414487984629498, guid: b65fceb6abf962745b817266bf5f8c24, type: 3}
 --- !u!1 &641843385 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1530292849067221781, guid: b65fceb6abf962745b817266bf5f8c24, type: 3}
@@ -504,11 +505,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5259767453272010162, guid: b65fceb6abf962745b817266bf5f8c24, type: 3}
       propertyPath: m_NavMeshLayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5259767453272010162, guid: b65fceb6abf962745b817266bf5f8c24, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6629140952478556158, guid: b65fceb6abf962745b817266bf5f8c24, type: 3}
       propertyPath: m_Layer
@@ -540,10 +541,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5259767453272010162, guid: b65fceb6abf962745b817266bf5f8c24, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 350057261}
+      addedObject: {fileID: 350057265}
     - targetCorrespondingSourceObject: {fileID: 5259767453272010162, guid: b65fceb6abf962745b817266bf5f8c24, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 350057265}
+      addedObject: {fileID: 350057267}
     - targetCorrespondingSourceObject: {fileID: 6629140952478556158, guid: b65fceb6abf962745b817266bf5f8c24, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1607356347}
@@ -738,7 +739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8c94c38cd80944ca750278f2a69116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 1036626405}
 --- !u!114 &1036626402
 MonoBehaviour:
   m_ObjectHideFlags: 0
