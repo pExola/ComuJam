@@ -7,7 +7,10 @@ public enum ObjectType
     ground, door, text, dialogue, colectable, none
 }
 
-public class Interactable : MonoBehaviour
+public abstract class Interactable : MonoBehaviour
 {
-    public ObjectType objectType; 
+    public bool isInteracting;
+    public ObjectType objectType;
+
+    public abstract void Interact();
 }

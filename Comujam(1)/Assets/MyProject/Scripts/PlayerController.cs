@@ -7,11 +7,11 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    public LayerMask groundLayer;
     public GameObject arrow;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     public GameObject camera;
-    public int velScrollCamera = 2, maxDistCamera=50,minDistCamera=20;
+    public int velScrollCamera = 2, maxDistCamera = 50, minDistCamera = 20;
     public int posCameraAtras = 10;
     private int posCameraAtrasReal;
     private GameObject currentArrow;
@@ -20,10 +20,13 @@ public class PlayerController : MonoBehaviour
     private bool estaParado = true;
     public List<Items> inventario;
     public int capacidadeInventario = 30;
+
+    PlayerInteractions playerInteractions;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animacao = GetComponent<Animator>();
+        playerInteractions = GetComponent<PlayerInteractions>();
         posCameraAtrasReal = posCameraAtras;
         inventario = new List<Items>(capacidadeInventario);
     }
@@ -31,11 +34,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        identificarClick();
-        andarNormal();
         andarClickando();
         atualizarPosicaoCamera();
     }
+
     void identificarClick()
     {
         if (Input.GetMouseButtonDown(1))
@@ -46,29 +48,37 @@ public class PlayerController : MonoBehaviour
     }
     void andarNormal()
     {
-        this.transform.position = new Vector3(this.transform.position.x+Input.GetAxis("Horizontal"), this.transform.position.y, this.transform.position.z+ Input.GetAxis("Vertical"));
+        this.transform.position = new Vector3(this.transform.position.x + Input.GetAxis("Horizontal"), this.transform.position.y, this.transform.position.z + Input.GetAxis("Vertical"));
     }
+
     void andarClickando()
     {
-        
-        if (Input.GetMouseButtonDown(0)) // Botão esquerdo do mouse
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            
-            if (Physics.Raycast(ray, out hit))
+            if (((1 << hit.collider.gameObject.layer) & groundLayer) != 0)
             {
-                agent.SetDestination(hit.point);
-                SpawnArrow(hit.point);
                 cursorOnGround = true;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    agent.SetDestination(hit.point);
+                    SpawnArrow(hit.point);
+                    playerInteractions.CancelInteraction();
+                }
             }
             else
             {
                 cursorOnGround = false;
             }
         }
-                
-        if (agent.velocity.magnitude == 0 )
+        else
+        {
+            cursorOnGround = false;
+        }
+
+
+        if (agent.velocity.magnitude == 0)
         {
             animacao.SetBool("isWalking", false);
         }
@@ -76,14 +86,12 @@ public class PlayerController : MonoBehaviour
         {
             animacao.SetBool("isWalking", true);
         }
-
-        Debug.Log($"{agent.velocity.x} {agent.velocity.y} {agent.velocity.z}");
     }
 
     void atualizarPosicaoCamera()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        
+
         //if (scroll > 0f)
         //{
         //    if (this.camera.transform.position.y + velScrollCamera <= maxDistCamera)
@@ -111,14 +119,14 @@ public class PlayerController : MonoBehaviour
     void SpawnArrow(Vector3 position)
     {
         // Ajusta a posição para que a seta fique um pouco acima do chão
-        if(currentArrow != null)
+        if (currentArrow != null)
         {
             Destroy(currentArrow);
         }
         Vector3 arrowPosition = position + Vector3.up * 0.1f;
 
         // Instancia o prefab da seta
-        currentArrow= Instantiate(arrow, arrowPosition, Quaternion.identity);
+        currentArrow = Instantiate(arrow, arrowPosition, Quaternion.identity);
     }
 
 
