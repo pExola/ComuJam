@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
                     agent.SetDestination(hit.point);
                     SpawnArrow(hit.point);
                     playerInteractions.CancelInteraction();
+                    UIManager.DisableInteraction();
                 }
             }
             else

@@ -29,6 +29,7 @@ public class PlayerInteractions : MonoBehaviour
 
                 if (Input.GetButtonDown("Fire1")) 
                 {
+                    UIManager.DisableInteraction();
                     interactRoutine = Interact(interactable);
                     StartCoroutine(interactRoutine);
                     Debug.Log("Obj");

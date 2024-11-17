@@ -5,12 +5,17 @@ using UnityEngine;
 public class TextInteraction : Interactable
 {
     public string text;
+    public Sprite portraitImage;
+
+    public string conditionalText;
+    public Item conditionalItem;
+
     public override void Interact()
     {
         if (isInteracting)
             return; 
 
         isInteracting = true;
-        Debug.Log(text);
+        UIManager.SetText(this);
     }
 }
