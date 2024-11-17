@@ -18,6 +18,8 @@ public class PlayerInteractions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (UIManager.InDialogue())
+            return;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -31,6 +33,7 @@ public class PlayerInteractions : MonoBehaviour
            
                 if (Input.GetButtonDown("Fire1")) 
                 {
+                    UIManager.DisableInteraction();
                     interactRoutine = Interact(interactable);
                     StartCoroutine(interactRoutine);
                     Debug.Log("Obj");

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
+  m_Name: Dialogo 1-1
+  m_EditorClassIdentifier: 
+  answers:
+  - {fileID: 11400000, guid: 093bbd03c3bfc38469ec6e3e8728f9c6, type: 2}
+  dialogueText: primeira repostas
+  playerAnswer: nao po primeiro so eu
+  portrait: {fileID: 0}
+  isEnd: 0
+  conditionalItem: {fileID: 0}
