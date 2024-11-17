@@ -28,7 +28,7 @@ public class PlayerInteractions : MonoBehaviour
             if (interactable != null)
             {
                 UIManager.SetCursors(interactable.objectType);
-
+           
                 if (Input.GetButtonDown("Fire1")) 
                 {
                     interactRoutine = Interact(interactable);
