@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static UIManager instance;
 
-    // Update is called once per frame
-    void Update()
+    public Texture2D[] cursors;
+    // Start is called before the first frame update
+    private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else 
+        {
+            Destroy(instance);
+        }
+    }
+    public static void SetCursors(ObjectType objectType) 
+    {
+        if (instance == null)
+            return;
+        Cursor.SetCursor(instance.cursors[(int)objectType], Vector2.zero, CursorMode.Auto);
     }
 }

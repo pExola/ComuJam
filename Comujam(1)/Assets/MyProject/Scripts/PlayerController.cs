@@ -7,9 +7,9 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    public LayerMask groundLayer;
     public GameObject arrow;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     public GameObject camera;
     public int velScrollCamera = 2, maxDistCamera=50,minDistCamera=20;
     public int posCameraAtras = 10;
@@ -20,10 +20,13 @@ public class PlayerController : MonoBehaviour
     private bool estaParado = true;
     public List<GameObject> inventario;
     public int capacidadeInventario = 30;
+
+    PlayerInteractions playerInteractions;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animacao = GetComponent<Animator>();
+        playerInteractions = GetComponent<PlayerInteractions>();
         posCameraAtrasReal = posCameraAtras;
         inventario = new List<GameObject>(capacidadeInventario);
     }
@@ -31,39 +34,35 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        identificarClick();
-        andarNormal();
         andarClickando();
         atualizarPosicaoCamera();
     }
-    void identificarClick()
-    {
-
-
-    }
-    void andarNormal()
-    {
-        this.transform.position = new Vector3(this.transform.position.x+Input.GetAxis("Horizontal"), this.transform.position.y, this.transform.position.z+ Input.GetAxis("Vertical"));
-    }
     void andarClickando()
     {
-        
-        if (Input.GetMouseButtonDown(0)) // Botão esquerdo do mouse
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            
-            if (Physics.Raycast(ray, out hit))
+            if (((1 << hit.collider.gameObject.layer) & groundLayer) != 0)
             {
-                agent.SetDestination(hit.point);
-                SpawnArrow(hit.point);
                 cursorOnGround = true;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    agent.SetDestination(hit.point);
+                    SpawnArrow(hit.point);
+                    playerInteractions.CancelInteraction();
+                }
             }
             else
             {
                 cursorOnGround = false;
             }
         }
+        else 
+        {
+            cursorOnGround= false;  
+        }
+        
                 
         if (agent.velocity.magnitude == 0 )
         {
@@ -73,8 +72,6 @@ public class PlayerController : MonoBehaviour
         {
             animacao.SetBool("isWalking", true);
         }
-
-        Debug.Log($"{agent.velocity.x} {agent.velocity.y} {agent.velocity.z}");
     }
 
     void atualizarPosicaoCamera()
