@@ -11,14 +11,14 @@ public class PlayerController : MonoBehaviour
     public GameObject arrow;
     public NavMeshAgent agent;
     public GameObject camera;
-    public int velScrollCamera = 2, maxDistCamera=50,minDistCamera=20;
+    public int velScrollCamera = 2, maxDistCamera = 50, minDistCamera = 20;
     public int posCameraAtras = 10;
     private int posCameraAtrasReal;
     private GameObject currentArrow;
     public bool cursorOnGround;
     private Animator animacao;
     private bool estaParado = true;
-    public List<GameObject> inventario;
+    public List<Items> inventario;
     public int capacidadeInventario = 30;
 
     PlayerInteractions playerInteractions;
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         animacao = GetComponent<Animator>();
         playerInteractions = GetComponent<PlayerInteractions>();
         posCameraAtrasReal = posCameraAtras;
-        inventario = new List<GameObject>(capacidadeInventario);
+        inventario = new List<Items>(capacidadeInventario);
     }
 
     // Update is called once per frame
@@ -37,6 +37,20 @@ public class PlayerController : MonoBehaviour
         andarClickando();
         atualizarPosicaoCamera();
     }
+
+    void identificarClick()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            animacao.SetBool("onAction", !animacao.GetBool("onAction"));
+        }
+
+    }
+    void andarNormal()
+    {
+        this.transform.position = new Vector3(this.transform.position.x + Input.GetAxis("Horizontal"), this.transform.position.y, this.transform.position.z + Input.GetAxis("Vertical"));
+    }
+
     void andarClickando()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -58,13 +72,13 @@ public class PlayerController : MonoBehaviour
                 cursorOnGround = false;
             }
         }
-        else 
+        else
         {
-            cursorOnGround= false;  
+            cursorOnGround = false;
         }
-        
-                
-        if (agent.velocity.magnitude == 0 )
+
+
+        if (agent.velocity.magnitude == 0)
         {
             animacao.SetBool("isWalking", false);
         }
@@ -77,27 +91,27 @@ public class PlayerController : MonoBehaviour
     void atualizarPosicaoCamera()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        
-        if (scroll > 0f)
-        {
-            if (this.camera.transform.position.y + velScrollCamera <= maxDistCamera)
-            {
-                this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y + velScrollCamera, this.transform.position.z);
-                posCameraAtrasReal += velScrollCamera;
-            }
-        }
-        else if (scroll < 0f)
-        {
-            if (this.camera.transform.position.y - velScrollCamera >= minDistCamera)
-            {
-                this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y - velScrollCamera, this.transform.position.z);
-                posCameraAtrasReal -= velScrollCamera;
-            }
-        }
-        else
-        {
-            this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y, this.transform.position.z - posCameraAtrasReal);
-        }
+
+        //if (scroll > 0f)
+        //{
+        //    if (this.camera.transform.position.y + velScrollCamera <= maxDistCamera)
+        //    {
+        //        this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y + velScrollCamera, this.transform.position.z);
+        //        posCameraAtrasReal += velScrollCamera;
+        //    }
+        //}
+        //else if (scroll < 0f)
+        //{
+        //    if (this.camera.transform.position.y - velScrollCamera >= minDistCamera)
+        //    {
+        //        this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y - velScrollCamera, this.transform.position.z);
+        //        posCameraAtrasReal -= velScrollCamera;
+        //    }
+        //}
+        //else
+        //{
+        //}
+        this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y, this.transform.position.z - posCameraAtrasReal);
         camera.transform.LookAt(this.transform.position);
     }
 
@@ -105,14 +119,14 @@ public class PlayerController : MonoBehaviour
     void SpawnArrow(Vector3 position)
     {
         // Ajusta a posição para que a seta fique um pouco acima do chão
-        if(currentArrow != null)
+        if (currentArrow != null)
         {
             Destroy(currentArrow);
         }
         Vector3 arrowPosition = position + Vector3.up * 0.1f;
 
         // Instancia o prefab da seta
-        currentArrow= Instantiate(arrow, arrowPosition, Quaternion.identity);
+        currentArrow = Instantiate(arrow, arrowPosition, Quaternion.identity);
     }
 
 
