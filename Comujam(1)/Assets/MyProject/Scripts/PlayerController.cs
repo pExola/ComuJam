@@ -10,10 +10,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public GameObject arrow;
     public NavMeshAgent agent;
-    public GameObject cameraPlayer;
+    //public GameObject cameraPlayer;
     public int velScrollCamera = 2, maxDistCamera = 50, minDistCamera = 20;
-    public int posCameraAtras = 10;
-    private int posCameraAtrasReal;
+    //public int posCameraAtras = 10;
+    //private int posCameraAtrasReal;
     private GameObject currentArrow;
     public bool cursorOnGround;
     private Animator animacao;
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animacao = GetComponent<Animator>();
         playerInteractions = GetComponent<PlayerInteractions>();
-        posCameraAtrasReal = posCameraAtras;
+        //posCameraAtrasReal = posCameraAtras;
         inventario = new List<Items>(capacidadeInventario);
     }
 
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         andarClickando();
-        atualizarPosicaoCamera();
+        //atualizarPosicaoCamera();
     }
 
     void andarClickando()
@@ -77,12 +77,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void atualizarPosicaoCamera()
-    {
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        this.cameraPlayer.transform.position = new Vector3(this.transform.position.x+cameraXPos, this.cameraPlayer.transform.position.y, this.transform.position.z - posCameraAtrasReal);
-        cameraPlayer.transform.LookAt(this.transform.position);
-    }
+    //void atualizarPosicaoCamera()
+    //{
+    //    float scroll = Input.GetAxis("Mouse ScrollWheel");
+    //    this.cameraPlayer.transform.position = new Vector3(this.transform.position.x+cameraXPos, this.cameraPlayer.transform.position.y, this.transform.position.z - posCameraAtrasReal);
+    //    cameraPlayer.transform.LookAt(this.transform.position);
+    //}
 
 
     void SpawnArrow(Vector3 position)
@@ -96,16 +96,6 @@ public class PlayerController : MonoBehaviour
 
         // Instancia o prefab da seta
         currentArrow = Instantiate(arrow, arrowPosition, Quaternion.identity);
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        // Verifica se o objeto que colidiu tem o nome ou tag esperado
-        if (collision.gameObject.CompareTag("Teleport"))
-        {
-            Debug.Log("Contato com o Player detectado!");
-
-        }
     }
     public bool CursorOnGround()
     {
