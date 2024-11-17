@@ -18,14 +18,14 @@ public class PlayerController : MonoBehaviour
     public bool cursorOnGround;
     private Animator animacao;
     private bool estaParado = true;
-    public List<GameObject> inventario;
+    public List<Items> inventario;
     public int capacidadeInventario = 30;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animacao = GetComponent<Animator>();
         posCameraAtrasReal = posCameraAtras;
-        inventario = new List<GameObject>(capacidadeInventario);
+        inventario = new List<Items>(capacidadeInventario);
     }
 
     // Update is called once per frame
