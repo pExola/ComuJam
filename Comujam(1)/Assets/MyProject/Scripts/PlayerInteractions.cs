@@ -28,15 +28,15 @@ public class PlayerInteractions : MonoBehaviour
             if (interactable != null)
             {
                 UIManager.SetCursors(interactable.objectType);
-
+           
                 if (Input.GetButtonDown("Fire1")) 
                 {
                     interactRoutine = Interact(interactable);
                     StartCoroutine(interactRoutine);
                     Debug.Log("Obj");
-                    //animator.SetBool("onAction",true);
-                    animator.SetTrigger("Acao");
-                    
+                    animator.SetBool("onAction", true);
+                    //animator.SetTrigger("Acao");
+
                 }
             }
             else if (controller.CursorOnGround())

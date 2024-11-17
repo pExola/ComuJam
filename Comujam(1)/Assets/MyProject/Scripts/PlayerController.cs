@@ -10,16 +10,16 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public GameObject arrow;
     public NavMeshAgent agent;
-    public GameObject camera;
+    public GameObject cameraPlayer;
     public int velScrollCamera = 2, maxDistCamera = 50, minDistCamera = 20;
     public int posCameraAtras = 10;
     private int posCameraAtrasReal;
     private GameObject currentArrow;
     public bool cursorOnGround;
     private Animator animacao;
-    private bool estaParado = true;
     public List<Items> inventario;
     public int capacidadeInventario = 30;
+    public int cameraXPos = 10;
 
     PlayerInteractions playerInteractions;
     void Start()
@@ -38,19 +38,6 @@ public class PlayerController : MonoBehaviour
         atualizarPosicaoCamera();
     }
 
-    void identificarClick()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            animacao.SetBool("onAction", !animacao.GetBool("onAction"));
-        }
-
-    }
-    void andarNormal()
-    {
-        this.transform.position = new Vector3(this.transform.position.x + Input.GetAxis("Horizontal"), this.transform.position.y, this.transform.position.z + Input.GetAxis("Vertical"));
-    }
-
     void andarClickando()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -65,6 +52,8 @@ public class PlayerController : MonoBehaviour
                     agent.SetDestination(hit.point);
                     SpawnArrow(hit.point);
                     playerInteractions.CancelInteraction();
+                    GameObject objeto = hit.collider.gameObject;
+                    Debug.Log($"{objeto.name}");
                 }
             }
             else
@@ -91,28 +80,8 @@ public class PlayerController : MonoBehaviour
     void atualizarPosicaoCamera()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-
-        //if (scroll > 0f)
-        //{
-        //    if (this.camera.transform.position.y + velScrollCamera <= maxDistCamera)
-        //    {
-        //        this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y + velScrollCamera, this.transform.position.z);
-        //        posCameraAtrasReal += velScrollCamera;
-        //    }
-        //}
-        //else if (scroll < 0f)
-        //{
-        //    if (this.camera.transform.position.y - velScrollCamera >= minDistCamera)
-        //    {
-        //        this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y - velScrollCamera, this.transform.position.z);
-        //        posCameraAtrasReal -= velScrollCamera;
-        //    }
-        //}
-        //else
-        //{
-        //}
-        this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y, this.transform.position.z - posCameraAtrasReal);
-        camera.transform.LookAt(this.transform.position);
+        this.cameraPlayer.transform.position = new Vector3(this.transform.position.x+cameraXPos, this.cameraPlayer.transform.position.y, this.transform.position.z - posCameraAtrasReal);
+        cameraPlayer.transform.LookAt(this.transform.position);
     }
 
 
@@ -129,10 +98,20 @@ public class PlayerController : MonoBehaviour
         currentArrow = Instantiate(arrow, arrowPosition, Quaternion.identity);
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        // Verifica se o objeto que colidiu tem o nome ou tag esperado
+        if (collision.gameObject.CompareTag("Teleport"))
+        {
+            Debug.Log("Contato com o Player detectado!");
 
+        }
+    }
     public bool CursorOnGround()
     {
         return cursorOnGround;
     }
 
+    
+    
 }
