@@ -38,7 +38,10 @@ public class PlayerController : MonoBehaviour
     }
     void identificarClick()
     {
-
+        if (Input.GetMouseButtonDown(1))
+        {
+            animacao.SetBool("onAction", !animacao.GetBool("onAction"));
+        }
 
     }
     void andarNormal()
@@ -81,26 +84,26 @@ public class PlayerController : MonoBehaviour
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         
-        if (scroll > 0f)
-        {
-            if (this.camera.transform.position.y + velScrollCamera <= maxDistCamera)
-            {
-                this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y + velScrollCamera, this.transform.position.z);
-                posCameraAtrasReal += velScrollCamera;
-            }
-        }
-        else if (scroll < 0f)
-        {
-            if (this.camera.transform.position.y - velScrollCamera >= minDistCamera)
-            {
-                this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y - velScrollCamera, this.transform.position.z);
-                posCameraAtrasReal -= velScrollCamera;
-            }
-        }
-        else
-        {
-            this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y, this.transform.position.z - posCameraAtrasReal);
-        }
+        //if (scroll > 0f)
+        //{
+        //    if (this.camera.transform.position.y + velScrollCamera <= maxDistCamera)
+        //    {
+        //        this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y + velScrollCamera, this.transform.position.z);
+        //        posCameraAtrasReal += velScrollCamera;
+        //    }
+        //}
+        //else if (scroll < 0f)
+        //{
+        //    if (this.camera.transform.position.y - velScrollCamera >= minDistCamera)
+        //    {
+        //        this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y - velScrollCamera, this.transform.position.z);
+        //        posCameraAtrasReal -= velScrollCamera;
+        //    }
+        //}
+        //else
+        //{
+        //}
+        this.camera.transform.position = new Vector3(this.transform.position.x, this.camera.transform.position.y, this.transform.position.z - posCameraAtrasReal);
         camera.transform.LookAt(this.transform.position);
     }
 
