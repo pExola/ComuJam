@@ -7,10 +7,12 @@ public class PlayerInteractions : MonoBehaviour
     PlayerController controller;
     IEnumerator interactRoutine;
     Interactable currentInteractable;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent <PlayerController>();
+        animator = GetComponent <Animator>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,9 @@ public class PlayerInteractions : MonoBehaviour
                     interactRoutine = Interact(interactable);
                     StartCoroutine(interactRoutine);
                     Debug.Log("Obj");
+                    //animator.SetBool("onAction",true);
+                    animator.SetTrigger("Acao");
+                    
                 }
             }
             else if (controller.CursorOnGround())
