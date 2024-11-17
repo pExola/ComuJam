@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     public GameObject interactionPanel;
     public TMP_Text interactionText;
     public Image portrait;
-
+    public TMP_Text[] answersText;
     bool inDialogue;
     TextInteraction textInteraction;
 
@@ -18,7 +18,13 @@ public class UIManager : MonoBehaviour
 
     public Image[] inventoryImages;
 
-    public bool InDialogue { get => inDialogue; }
+    public static bool InDialogue() 
+    {
+        if (instance == null)
+            return false;
+
+        return instance.inDialogue;
+    }
 
     // Start is called before the first frame update
     private void Awake()
@@ -119,9 +125,46 @@ public class UIManager : MonoBehaviour
         if(instance == null)
             return;
 
+        if (dialogue.isEnd) 
+        {
+            FinishDialogue();
+            return;
+        }
+
         instance.inDialogue = true;
         SetCursors(ObjectType.none);
         DisableInteraction();
-        instance.portrait.sprite = dialogue.portrait;  
+        instance.portrait.sprite = dialogue.portrait; 
+        instance.interactionText.text = dialogue.dialogueText;
+
+        for (int i = 0; i < instance.answersText.Length; i++) 
+        {
+            if (i < dialogue.answers.Length)
+            {
+                instance.answersText[i].text = dialogue.answers[i].playerAnswer;
+                instance.answersText[i].GetComponent<AnswerButton>().dialogue = dialogue.answers[i];
+                instance.answersText[i].gameObject.SetActive(true);
+            }
+            else 
+            {
+                instance.answersText[i].gameObject.SetActive(false);
+            }
+        }
+
+        instance.interactionPanel.SetActive(true);
+    }
+
+    public static void FinishDialogue() 
+    {
+        if (instance == null)
+            return;
+
+        for (int i = 0; i < instance.answersText.Length; i++) 
+        {
+            instance.answersText[i].gameObject.SetActive(false);
+        }
+
+            instance.inDialogue = false;
+        DisableInteraction();
     }
 }

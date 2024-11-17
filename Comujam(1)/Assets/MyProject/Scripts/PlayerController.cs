@@ -34,11 +34,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (agent.velocity.magnitude == 0)
+        {
+            animacao.SetBool("isWalking", false);
+        }
+        else
+        {
+            animacao.SetBool("isWalking", true);
+        }
+        if (UIManager.InDialogue())
+            return;
         andarClickando();
         atualizarPosicaoCamera();
     }
     void andarClickando()
     {
+        
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
@@ -64,15 +75,6 @@ public class PlayerController : MonoBehaviour
             cursorOnGround= false;  
         }
         
-                
-        if (agent.velocity.magnitude == 0 )
-        {
-            animacao.SetBool("isWalking", false);
-        }
-        else
-        {
-            animacao.SetBool("isWalking", true);
-        }
     }
 
     void atualizarPosicaoCamera()
