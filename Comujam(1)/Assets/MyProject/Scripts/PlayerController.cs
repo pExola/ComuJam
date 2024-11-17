@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public List<Items> inventario;
     public int capacidadeInventario = 30;
     public int cameraXPos = 10;
-
+    public int itemSelecionado = 0;
     PlayerInteractions playerInteractions;
     void Start()
     {
@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
             return;
         andarClickando();
         //atualizarPosicaoCamera();
+        usarItem();
+        selecionarItem();
     }
 
     void andarClickando()
@@ -113,6 +115,29 @@ public class PlayerController : MonoBehaviour
         return cursorOnGround;
     }
 
+    void usarItem()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            Item item = Inventory.GetItem(itemSelecionado - 1);
+            if (item != null)
+            {
+                Inventory.UseItem(item);
+            }
+        }
+    }
+    void selecionarItem()
+    {
+        for (KeyCode key = KeyCode.Alpha0; key <= KeyCode.Alpha9; key++)
+        {
+            if (Input.GetKeyDown(key))
+            {
+                // Converte a tecla para o número correspondente (usando tabela ASCII internamente)
+                itemSelecionado = key - KeyCode.Alpha0;
+                Debug.Log($"Número pressionado: {itemSelecionado}");
+            }
+        }
+    }
     
     
 }

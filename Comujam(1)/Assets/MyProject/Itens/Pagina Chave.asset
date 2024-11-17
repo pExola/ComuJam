@@ -15,4 +15,4 @@ MonoBehaviour:
   id: 1
   nomeItem: Habilidade de abrir Portas
   value: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: b23a0084fea403945a302e12cc707439, type: 3}

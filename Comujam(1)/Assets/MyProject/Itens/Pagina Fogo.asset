@@ -15,4 +15,4 @@ MonoBehaviour:
   id: 2
   nomeItem: Habilidade de Fogo
   value: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: b23a0084fea403945a302e12cc707439, type: 3}
