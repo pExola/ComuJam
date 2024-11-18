@@ -1,23 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Threading.Tasks;
+using UnityEngine;
+
 public class PlayerInteractions : MonoBehaviour
 {
     PlayerController controller;
     IEnumerator interactRoutine;
     Interactable currentInteractable;
-    public Animator animator;
+    public GameObject caixaDeSom;
+    private Animator caixaDeSomAnimator;
+    public int estadoCaixaDeSom=0;
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent <PlayerController>();
-        animator = GetComponent <Animator>();
+        caixaDeSomAnimator = caixaDeSom.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //CaixaDeSomStateMachine();
         if (UIManager.InDialogue())
             return;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -30,16 +34,20 @@ public class PlayerInteractions : MonoBehaviour
             if (interactable != null)
             {
                 UIManager.SetCursors(interactable.objectType);
-           
+
                 if (Input.GetButtonDown("Fire1")) 
                 {
                     UIManager.DisableInteraction();
                     interactRoutine = Interact(interactable);
                     StartCoroutine(interactRoutine);
                     Debug.Log("Obj");
-                    
-                    //animator.SetTrigger("Acao");
-
+                    //if (interactable.gameObject.name == "caixa_de_som")
+                    //{
+                    //    if (estadoCaixaDeSom == 0)
+                    //    {
+                    //        estadoCaixaDeSom = 1;
+                    //    }
+                    //}
                 }
             }
             else if (controller.CursorOnGround())
@@ -75,14 +83,25 @@ public class PlayerInteractions : MonoBehaviour
             {
                 walking = false;
                 controller.agent.SetDestination(transform.position);
-                animator.SetBool("onAction", true);
-                voltar();
             }
         }
         interactable.Interact();
         currentInteractable = interactable;
     }
 
+    public void CaixaDeSomStateMachine()
+    {
+        if (estadoCaixaDeSom == 0)
+        {
+            caixaDeSomAnimator.SetBool("isPlaying", false);
+        }
+        else if(estadoCaixaDeSom == 1)
+        {
+            caixaDeSomAnimator.SetBool("isPlaying", true);
+            Task.Delay(7000);
+            estadoCaixaDeSom = 0;
+        }
+    }
     public void CancelInteraction() 
     {
         if (interactRoutine != null) 
@@ -93,10 +112,5 @@ public class PlayerInteractions : MonoBehaviour
             currentInteractable.isInteracting = false;
             currentInteractable = null;
         }
-    }
-    public async Task voltar()
-    {
-        await Task.Delay(1000);
-        animator.SetBool("onAction", false);
     }
 }

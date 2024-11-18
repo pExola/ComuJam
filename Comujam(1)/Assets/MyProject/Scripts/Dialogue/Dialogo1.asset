@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   answers:
   - {fileID: 11400000, guid: 7ac5f8b98e525a342bf57e0ba0adcdd3, type: 2}
+  - {fileID: 11400000, guid: b8278d7a1f2efbd4990b00f728543438, type: 2}
   - {fileID: 11400000, guid: a80229d329267a64fb525591f3b79d71, type: 2}
-  dialogueText: Fala comigo
-  playerAnswer: Fala memo cz
+  dialogueText: 'Bartender: Finalmente acordou! Baita festa em, mas acha que chega
+    a tempo do seu casamento?'
+  playerAnswer: --Voltar
   portrait: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   isEnd: 0
   conditionalItem: {fileID: 0}

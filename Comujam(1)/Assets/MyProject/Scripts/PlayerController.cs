@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
             return;
         andarClickando();
         //atualizarPosicaoCamera();
-        usarItem();
+        //usarItem();
         selecionarItem();
     }
 
@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
                     agent.SetDestination(hit.point);
                     SpawnArrow(hit.point);
                     playerInteractions.CancelInteraction();
+                    
                     GameObject objeto = hit.collider.gameObject;
                     Debug.Log($"{objeto.name}");
                 }
@@ -115,17 +116,18 @@ public class PlayerController : MonoBehaviour
         return cursorOnGround;
     }
 
-    void usarItem()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            Item item = Inventory.GetItem(itemSelecionado - 1);
-            if (item != null)
-            {
-                Inventory.UseItem(item);
-            }
-        }
-    }
+    //void usarItem()
+    //{
+    //    if (Input.GetMouseButtonDown(1))
+    //    {
+    //        Item item = Inventory.GetItem(itemSelecionado - 1);
+    //        if (item != null)
+    //        {
+    //            Inventory.UseItem(item);
+
+    //        }
+    //    }
+    //}
     void selecionarItem()
     {
         for (KeyCode key = KeyCode.Alpha0; key <= KeyCode.Alpha9; key++)

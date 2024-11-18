@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   answers:
   - {fileID: 11400000, guid: 093bbd03c3bfc38469ec6e3e8728f9c6, type: 2}
-  dialogueText: primeira repostas
-  playerAnswer: nao po primeiro so eu
+  dialogueText: Boa sorte, cuidado com a aranha que voces invocaram
+  playerAnswer: "Meu deus n\xE3o lembro de nada, preciso descobrir onde est\xE3o
+    meus poderes"
   portrait: {fileID: 0}
   isEnd: 0
   conditionalItem: {fileID: 0}

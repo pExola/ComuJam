@@ -13,6 +13,7 @@ public class Teleport : Interactable
     public GameObject player;
     public NavMeshAgent agent;
     public string cena;
+    //public GameObject escotilha;
     public async override void Interact()
     {
         if (isInteracting)
@@ -21,6 +22,16 @@ public class Teleport : Interactable
         isInteracting = true;
         Debug.Log($"{text} teleportanto!");
         await Task.Delay(1000);
+        //if (escotilha != null)
+        //{
+        //    var animatorEscotilha = escotilha.GetComponent<Animator>();
+        //    if (animatorEscotilha != null)
+        //    {
+        //        animatorEscotilha.SetBool("isOpening", true);
+        //        await Task.Delay(1000);
+        //        animatorEscotilha.SetBool("isOpening", false);
+        //    }
+        //}
         SceneManager.LoadScene(cena);
     }
 }

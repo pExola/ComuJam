@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -8,7 +7,7 @@ public class Inventory : MonoBehaviour
     public List<Item> items;
 
     static Inventory instance;
-    
+
     private void Awake()
     {
         if (instance == null)
@@ -20,11 +19,6 @@ public class Inventory : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    public void Update()
-    {
-        
     }
 
     public static void SetItem(Item item) 
@@ -44,13 +38,6 @@ public class Inventory : MonoBehaviour
 
         return instance.items.Contains(item);
     }
-    public static bool HasItemOnList()
-    {
-        if (instance == null)
-            return false;
-
-        return instance.items.Count>0;
-    }
 
     public static void UseItem(Item item) 
     {
@@ -60,16 +47,7 @@ public class Inventory : MonoBehaviour
         instance.items.Remove(item);
         UIManager.RemoveInventoryImage(item);   
     }
-    public static Item GetItem(int id)
-    {
-        if (Inventory.HasItemOnList())
-        {
-            return instance.items[id];
-
-        }
-        else
-        {
-            return null;
-        }
+    public static void GetItem(int id) { 
+        
     }
 }
