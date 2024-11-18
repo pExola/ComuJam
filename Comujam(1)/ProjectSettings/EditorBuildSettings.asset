@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MyProject/Scenes/TavernaInicial.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/MyProject/Scenes/SplashScreen.unity
+    guid: bb2e56142269a8c4c9c47c3186b928ed
+  - enabled: 1
+    path: Assets/MyProject/Scenes/CriandoDialogo.unity
+    guid: 6b855782657000a40947081f42450e4b
   - enabled: 1
     path: Assets/MyProject/Scenes/Porao.unity
     guid: 4ca107f1d6cc31448a527c9a303bcdba
-  - enabled: 1
-    path: Assets/MyProject/Scenes/TavernaFinal.unity
-    guid: 7010369dc3f36124ba063d01eee878a0
   m_configObjects: {}

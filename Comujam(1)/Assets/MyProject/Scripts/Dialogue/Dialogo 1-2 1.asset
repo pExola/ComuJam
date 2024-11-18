@@ -16,6 +16,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 093bbd03c3bfc38469ec6e3e8728f9c6, type: 2}
   dialogueText: "U\xE9, essa festa que voce deu, n\xE3o era sua despedida de solteiro?"
   playerAnswer: Como assim casamento?
-  portrait: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 375177b77201c134aa933036812b5cb2, type: 3}
   isEnd: 0
   conditionalItem: {fileID: 0}
+  recompensaDialogo: {fileID: 0}

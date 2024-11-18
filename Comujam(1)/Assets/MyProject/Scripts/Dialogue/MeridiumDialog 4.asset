@@ -17,7 +17,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dc5a95458937bce4397c5327c9139c50, type: 2}
   dialogueText: 'Meridium: Uau voce achou minha varinha!'
   playerAnswer: Achei uma varinha
-  portrait: {fileID: 0}
+  portrait: {fileID: 21300000, guid: dac8a9203c0971c42aff975701ee6dc5, type: 3}
   isEnd: 0
   conditionalItem: {fileID: 11400000, guid: 96ba9910a7c88de4d9caf68514007aee, type: 2}
   recompensaDialogo: {fileID: 0}
