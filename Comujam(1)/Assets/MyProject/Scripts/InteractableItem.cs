@@ -12,9 +12,9 @@ public class InteractableItem : Interactable
         Debug.Log("Interagindo");
         if(animator != null)
         {
-            animator.SetBool("isPlaying", true);
-            Task.Delay(7000);
-            animator.SetBool("isPlaying", false);
+            
+            animator.SetBool("isPlaying", !animator.GetBool("isPlaying"));
+            RatoScript.emAlerta = !RatoScript.emAlerta;
         }
     }
 }

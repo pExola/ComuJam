@@ -120,12 +120,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public static void SetDialogue(Dialogue dialogue) 
+    public static void SetDialogue(Dialogue dialogue)
     {
-        if(instance == null)
+        if (instance == null)
             return;
 
-        if (dialogue.isEnd) 
+        if (dialogue.isEnd)
         {
             FinishDialogue();
             return;
@@ -134,9 +134,12 @@ public class UIManager : MonoBehaviour
         instance.inDialogue = true;
         SetCursors(ObjectType.none);
         DisableInteraction();
-        instance.portrait.sprite = dialogue.portrait; 
+        instance.portrait.sprite = dialogue.portrait;
         instance.interactionText.text = dialogue.dialogueText;
-
+        if (dialogue.recompensaDialogo != null)
+        {
+            Inventory.SetItem(dialogue.recompensaDialogo);
+        }
         for (int i = 0; i < instance.answersText.Length; i++) 
         {
             if (i < dialogue.answers.Length)

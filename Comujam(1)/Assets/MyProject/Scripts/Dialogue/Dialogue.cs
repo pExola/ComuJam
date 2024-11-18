@@ -11,4 +11,5 @@ public class Dialogue : ScriptableObject
     public Sprite portrait;
     public bool isEnd;
     public Item conditionalItem;
+    public Item recompensaDialogo;
 }

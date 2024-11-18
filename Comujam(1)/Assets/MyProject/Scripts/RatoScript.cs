@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class RatoScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public bool emAlerta = false;
+    public static bool emAlerta = false;
     public List<Vector3> pontosDeViagem;
     public Vector3 toca;
     private NavMeshAgent agentRato;

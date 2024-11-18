@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
-  m_Name: MeridiumDialog
+  m_Name: MeridiumDialog 5
   m_EditorClassIdentifier: 
   answers:
-  - {fileID: 11400000, guid: 9dc2f8337c93a9f4eb45db4cbeb6df5c, type: 2}
-  - {fileID: 11400000, guid: 44c64f23817853d4e86441148771f7ca, type: 2}
-  - {fileID: 11400000, guid: a80229d329267a64fb525591f3b79d71, type: 2}
-  dialogueText: 'Meridium: Bebemos tanto que perdi minha varinha'
-  playerAnswer: --Voltar
+  - {fileID: 11400000, guid: dc5a95458937bce4397c5327c9139c50, type: 2}
+  dialogueText: 'Meridium: Muito obrigado!'
+  playerAnswer: Estava na toca do rato
   portrait: {fileID: 0}
   isEnd: 0
-  conditionalItem: {fileID: 0}
-  recompensaDialogo: {fileID: 0}
+  conditionalItem: {fileID: 11400000, guid: 96ba9910a7c88de4d9caf68514007aee, type: 2}
+  recompensaDialogo: {fileID: 11400000, guid: a185106305323ba46ba45a128602e885, type: 2}
