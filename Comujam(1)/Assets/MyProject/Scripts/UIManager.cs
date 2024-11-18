@@ -37,6 +37,9 @@ public class UIManager : MonoBehaviour
         {
             Destroy(instance);
         }
+        foreach(var item in Inventory.GetItems()){
+            SetInventoryImage(item);
+        }
     }
     public static void SetCursors(ObjectType objectType) 
     {

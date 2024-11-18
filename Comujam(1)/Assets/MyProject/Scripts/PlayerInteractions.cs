@@ -14,8 +14,12 @@ public class PlayerInteractions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        controller = GetComponent <PlayerController>();
-        caixaDeSomAnimator = caixaDeSom.GetComponent<Animator>();
+        controller = GetComponent<PlayerController>();
+        if(caixaDeSom != null)
+        {
+            caixaDeSomAnimator = caixaDeSom.GetComponent<Animator>();
+        }
+        
     }
 
     // Update is called once per frame

@@ -50,4 +50,8 @@ public class Inventory : MonoBehaviour
     public static void GetItem(int id) { 
         
     }
+    public static List<Item> GetItems()
+    {
+        return instance.items;
+    }
 }
