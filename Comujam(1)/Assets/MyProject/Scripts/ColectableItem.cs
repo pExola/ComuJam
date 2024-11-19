@@ -6,10 +6,15 @@ public class ColectableItem : Interactable
 {
     public Item item;
     public bool destruir = true;
+    public bool pego = false;
     public override void Interact()
     {
-        Inventory.SetItem(item);
-        Debug.Log("Coletou " + item.itemName);
+        if(!pego)
+        {
+            Inventory.SetItem(item);
+            Debug.Log("Coletou " + item.itemName);
+            this.pego = true;
+        }
         if (destruir)
         {
             Destroy(gameObject);
