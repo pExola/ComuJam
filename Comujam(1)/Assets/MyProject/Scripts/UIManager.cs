@@ -29,15 +29,19 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        carregaInvUI();
+    }
+    public void carregaInvUI() {
         if (instance == null)
         {
             instance = this;
         }
-        else 
+        else
         {
             Destroy(instance);
         }
-        foreach(var item in Inventory.GetItems()){
+        foreach (var item in Inventory.GetItems())
+        {
             SetInventoryImage(item);
         }
     }
@@ -122,6 +126,16 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+    public static void RemoveAllInventoryImage()
+    {
+        if (instance == null)
+            return;
+
+        for (int i = 0; i < instance.inventoryImages.Length; i++)
+        {
+            instance.inventoryImages[i].gameObject.SetActive(false);    
+        }
+    }
 
     public static void SetDialogue(Dialogue dialogue)
     {
@@ -135,7 +149,7 @@ public class UIManager : MonoBehaviour
         }
 
         instance.inDialogue = true;
-        SetCursors(ObjectType.none);
+        SetCursors(ObjectType.text);
         DisableInteraction();
         instance.portrait.sprite = dialogue.portrait;
         instance.interactionText.text = dialogue.dialogueText;
@@ -146,24 +160,31 @@ public class UIManager : MonoBehaviour
                 Inventory.SetItem(dialogue.recompensaDialogo); 
             }
         }
-        
-        for (int i = 0; i < instance.answersText.Length; i++) 
+        if (dialogue.removeConditionalItem)
         {
-            if (i < dialogue.answers.Length)
+            Inventory.RemoveItem(dialogue.conditionalItem);
+            RemoveAllInventoryImage();
+            instance.carregaInvUI();
+        }
+        var CaixasUI = instance.answersText;
+        var RespostasDialogos = dialogue.answers;
+        foreach(var caixa in CaixasUI)
+        {
+            caixa.gameObject.SetActive(false);
+        }
+        for (int indiceUI = 0,indiceRespostaDialogo=0; indiceRespostaDialogo < RespostasDialogos.Length; indiceRespostaDialogo++)
+        {
+            if (indiceUI < RespostasDialogos.Length)
             {
-                if (Inventory.HasItem(dialogue.answers[i].conditionalItem) || dialogue.answers[i].conditionalItem == null)
+                if (Inventory.HasItem(RespostasDialogos[indiceRespostaDialogo].conditionalItem) || RespostasDialogos[indiceRespostaDialogo].conditionalItem == null)
                 {
-                    instance.answersText[i].text = dialogue.answers[i].playerAnswer;
-                    instance.answersText[i].GetComponent<AnswerButton>().dialogue = dialogue.answers[i];
-                    instance.answersText[i].gameObject.SetActive(true);
+                    CaixasUI[indiceUI].text = RespostasDialogos[indiceRespostaDialogo].playerAnswer;
+                    CaixasUI[indiceUI].GetComponent<AnswerButton>().dialogue = RespostasDialogos[indiceRespostaDialogo];
+                    CaixasUI[indiceUI].gameObject.SetActive(true);
+                    indiceUI += 1;
                 }
             }
-            else 
-            {
-                instance.answersText[i].gameObject.SetActive(false);
-            }
         }
-
         instance.interactionPanel.SetActive(true);
     }
 
@@ -177,7 +198,7 @@ public class UIManager : MonoBehaviour
             instance.answersText[i].gameObject.SetActive(false);
         }
 
-            instance.inDialogue = false;
+        instance.inDialogue = false;
         DisableInteraction();
     }
 }

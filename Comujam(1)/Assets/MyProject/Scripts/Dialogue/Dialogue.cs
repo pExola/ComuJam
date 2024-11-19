@@ -12,4 +12,5 @@ public class Dialogue : ScriptableObject
     public bool isEnd;
     public Item conditionalItem;
     public Item recompensaDialogo;
+    public bool removeConditionalItem = false;
 }

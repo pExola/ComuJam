@@ -47,6 +47,16 @@ public class Inventory : MonoBehaviour
         instance.items.Remove(item);
         UIManager.RemoveInventoryImage(item);   
     }
+
+    public static void RemoveItem(Item item)
+    {
+        if(instance == null)
+        {
+            return;
+        }
+        instance.items.Remove(item);
+    }
+
     public static void GetItem(int id) { 
         
     }

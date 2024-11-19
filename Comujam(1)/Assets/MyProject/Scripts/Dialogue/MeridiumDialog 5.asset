@@ -20,3 +20,4 @@ MonoBehaviour:
   isEnd: 0
   conditionalItem: {fileID: 11400000, guid: 96ba9910a7c88de4d9caf68514007aee, type: 2}
   recompensaDialogo: {fileID: 11400000, guid: a185106305323ba46ba45a128602e885, type: 2}
+  removeConditionalItem: 1
