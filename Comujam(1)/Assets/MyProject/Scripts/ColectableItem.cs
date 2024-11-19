@@ -9,7 +9,7 @@ public class ColectableItem : Interactable
     public bool pego = false;
     public override void Interact()
     {
-        if(!pego)
+        if(!pego&& !Inventory.HasItem(item))
         {
             Inventory.SetItem(item);
             Debug.Log("Coletou " + item.itemName);

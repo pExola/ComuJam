@@ -141,15 +141,22 @@ public class UIManager : MonoBehaviour
         instance.interactionText.text = dialogue.dialogueText;
         if (dialogue.recompensaDialogo != null)
         {
-            Inventory.SetItem(dialogue.recompensaDialogo);
+            if (!Inventory.HasItem(dialogue.recompensaDialogo))
+            {
+                Inventory.SetItem(dialogue.recompensaDialogo); 
+            }
         }
+        
         for (int i = 0; i < instance.answersText.Length; i++) 
         {
             if (i < dialogue.answers.Length)
             {
-                instance.answersText[i].text = dialogue.answers[i].playerAnswer;
-                instance.answersText[i].GetComponent<AnswerButton>().dialogue = dialogue.answers[i];
-                instance.answersText[i].gameObject.SetActive(true);
+                if (Inventory.HasItem(dialogue.answers[i].conditionalItem) || dialogue.answers[i].conditionalItem == null)
+                {
+                    instance.answersText[i].text = dialogue.answers[i].playerAnswer;
+                    instance.answersText[i].GetComponent<AnswerButton>().dialogue = dialogue.answers[i];
+                    instance.answersText[i].gameObject.SetActive(true);
+                }
             }
             else 
             {
