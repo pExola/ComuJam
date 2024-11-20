@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public Texture2D[] cursors;
 
     public Image[] inventoryImages;
+    public Image[] inventorySelectors;
 
     public static bool InDialogue() 
     {
@@ -61,6 +62,22 @@ public class UIManager : MonoBehaviour
         Cursor.SetCursor(instance.cursors[(int)objectType], Vector2.zero, CursorMode.Auto);
     }
 
+
+    public static void selectItem(int id)
+    {
+        for(int x = 0; x < instance.inventorySelectors.Length; x++)
+        {
+            if (x == id)
+            {
+                instance.inventorySelectors[x].gameObject.SetActive(true);
+            }
+            else
+            {
+                instance.inventorySelectors[x].gameObject.SetActive(false);
+
+            }
+        }
+    }
     public static void SetInventoryImage(Item item) 
     {
         if (instance == null)
@@ -205,4 +222,6 @@ public class UIManager : MonoBehaviour
         instance.inDialogue = false;
         DisableInteraction();
     }
+
+
 }

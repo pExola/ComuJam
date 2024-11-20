@@ -46,8 +46,9 @@ public class PlayerController : MonoBehaviour
             return;
         andarClickando();
         //atualizarPosicaoCamera();
-        //usarItem();
+        usarItem();
         selecionarItem();
+        UIManager.selectItem(itemSelecionado);
     }
 
     void andarClickando()
@@ -116,29 +117,41 @@ public class PlayerController : MonoBehaviour
         return cursorOnGround;
     }
 
-    //void usarItem()
-    //{
-    //    if (Input.GetMouseButtonDown(1))
-    //    {
-    //        Item item = Inventory.GetItem(itemSelecionado - 1);
-    //        if (item != null)
-    //        {
-    //            Inventory.UseItem(item);
+    void usarItem()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            Item item = Inventory.GetItem(itemSelecionado - 1);
+            if (item != null)
+            {
+                Inventory.UseItem(item);
 
-    //        }
-    //    }
-    //}
+            }
+        }
+    }
     void selecionarItem()
     {
-        for (KeyCode key = KeyCode.Alpha0; key <= KeyCode.Alpha9; key++)
+        for (KeyCode key = KeyCode.Alpha1; key <= KeyCode.Alpha4; key++)
         {
             if (Input.GetKeyDown(key))
             {
                 // Converte a tecla para o número correspondente (usando tabela ASCII internamente)
-                itemSelecionado = key - KeyCode.Alpha0;
+                itemSelecionado = key - KeyCode.Alpha0-1;
                 Debug.Log($"Número pressionado: {itemSelecionado}");
             }
         }
+
+        //if (Input.anyKeyDown)
+        //{
+        //    // Identifica qual tecla foi pressionada
+        //    string keyPressed = Input.inputString;
+
+        //    if (!string.IsNullOrEmpty(keyPressed))
+        //    {
+        //        Debug.Log("Tecla pressionada: " + keyPressed);
+        //        //RealizarAcao(keyPressed);
+        //    }
+        //}
     }
     
     

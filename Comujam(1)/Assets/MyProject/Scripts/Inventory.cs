@@ -57,8 +57,8 @@ public class Inventory : MonoBehaviour
         instance.items.Remove(item);
     }
 
-    public static void GetItem(int id) { 
-        
+    public static Item GetItem(int id) { 
+        return instance.items[id];
     }
     public static List<Item> GetItems()
     {
