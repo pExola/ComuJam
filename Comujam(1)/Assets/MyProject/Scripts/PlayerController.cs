@@ -21,11 +21,13 @@ public class PlayerController : MonoBehaviour
     public int cameraXPos = 10;
     public int itemSelecionado = 0;
     PlayerInteractions playerInteractions;
+    public static Transform PlayerPos;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animacao = GetComponent<Animator>();
         playerInteractions = GetComponent<PlayerInteractions>();
+        PlayerPos = GetComponent<Transform>();
         //posCameraAtrasReal = posCameraAtras;
     }
 

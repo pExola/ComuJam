@@ -15,3 +15,5 @@ MonoBehaviour:
   itemName: Varinha
   itemImage: {fileID: 21300000, guid: 68b166c4c3f38d546a61183eadfa6ae3, type: 3}
   description: 
+  uniqueUse: 0
+  removeOnDialogue: 1

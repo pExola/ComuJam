@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e84632604b7e104e8cd0b037a056ee0, type: 3}
+  m_Name: FeiticoGeloParticulaTesteUso
+  m_EditorClassIdentifier: 
+  itemName: FeiticoDeGelo
+  itemImage: {fileID: 21300000, guid: 82baa74b48b235c42abd4a541fdf4cd9, type: 3}
+  description: JogarGeloNosOtarios
+  uniqueUse: 0
+  removeOnDialogue: 0
+  Poder: 3.02
+  particula: {fileID: 7725050932229746099, guid: 2d24ba55c6c3d234db7f2c5292d5b09a, type: 3}
+  player: {fileID: 0}

@@ -11,7 +11,7 @@ public class Item : ScriptableObject
     public bool uniqueUse;
     public bool removeOnDialogue;
 
-    public void usarItem()
+    virtual public void usarItem()
     {
         Debug.Log($"{itemName} usado!");
     }
