@@ -123,8 +123,8 @@ ModelImporter:
       name: Armature|NPC_IDLE
       takeName: Armature|NPC_IDLE
       internalID: -2475306824163612643
-      firstFrame: 19
-      lastFrame: 58
+      firstFrame: 12
+      lastFrame: 52
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
