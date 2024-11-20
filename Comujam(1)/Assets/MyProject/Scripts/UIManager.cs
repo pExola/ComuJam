@@ -108,8 +108,15 @@ public class UIManager : MonoBehaviour
                 instance.interactionText.text = interactable.conditionalText;
                 if (interactable.useItem) 
                 {
-                    Inventory.UseItem(interactable.conditionalItem);
-                    interactable.onUseItem.Invoke();
+                    if (interactable.conditionalItem.removeOnDialogue)
+                    {
+                        Inventory.UseItemInDialogue(interactable.conditionalItem);
+                    }
+                    else
+                    {
+                        Inventory.UseItem(interactable.conditionalItem);
+                        interactable.onUseItem.Invoke();
+                    }
                 }
             }
             else

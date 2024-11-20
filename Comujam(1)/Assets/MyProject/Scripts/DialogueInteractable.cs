@@ -8,6 +8,5 @@ public class DialogueInteractable : Interactable
     public override void Interact()
     {
         UIManager.SetDialogue(dialogue);
-
     }
 }

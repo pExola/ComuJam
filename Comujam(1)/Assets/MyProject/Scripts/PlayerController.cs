@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     private GameObject currentArrow;
     public bool cursorOnGround;
     private Animator animacao;
-    public List<Items> inventario;
     public int capacidadeInventario = 30;
     public int cameraXPos = 10;
     public int itemSelecionado = 0;
@@ -28,7 +27,6 @@ public class PlayerController : MonoBehaviour
         animacao = GetComponent<Animator>();
         playerInteractions = GetComponent<PlayerInteractions>();
         //posCameraAtrasReal = posCameraAtras;
-        inventario = new List<Items>(capacidadeInventario);
     }
 
     // Update is called once per frame
@@ -121,7 +119,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Item item = Inventory.GetItem(itemSelecionado - 1);
+            Item item = Inventory.GetItem(itemSelecionado);
             if (item != null)
             {
                 Inventory.UseItem(item);

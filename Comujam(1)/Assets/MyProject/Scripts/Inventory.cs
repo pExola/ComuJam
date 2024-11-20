@@ -43,9 +43,21 @@ public class Inventory : MonoBehaviour
     {
         if (instance == null)
             return;
+        item.usarItem();
+        if (item.uniqueUse)
+        {
+            instance.items.Remove(item);
+        }
+        UIManager.AtualizarInventario();
+    }
 
+    public static void UseItemInDialogue(Item item)
+    {
+        if (instance == null)
+            return;
+        item.usarItem();
         instance.items.Remove(item);
-        UIManager.RemoveInventoryImage(item);   
+        UIManager.AtualizarInventario();
     }
 
     public static void RemoveItem(Item item)
@@ -55,10 +67,20 @@ public class Inventory : MonoBehaviour
             return;
         }
         instance.items.Remove(item);
+        UIManager.AtualizarInventario();
+
     }
 
-    public static Item GetItem(int id) { 
-        return instance.items[id];
+    public static Item GetItem(int id) {
+        if (instance.items.Count > id)
+        {
+            return instance.items[id];
+        }
+        else
+        {
+            return null;
+        }
+
     }
     public static List<Item> GetItems()
     {
