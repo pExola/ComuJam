@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
@@ -40,6 +41,14 @@ public class UIManager : MonoBehaviour
         {
             Destroy(instance);
         }
+        foreach (var item in Inventory.GetItems())
+        {
+            SetInventoryImage(item);
+        }
+    }
+    public static void AtualizarInventario()
+    {
+        RemoveAllInventoryImage();
         foreach (var item in Inventory.GetItems())
         {
             SetInventoryImage(item);
@@ -159,8 +168,7 @@ public class UIManager : MonoBehaviour
         if (dialogue.removeConditionalItem)
         {
             Inventory.RemoveItem(dialogue.conditionalItem);
-            RemoveAllInventoryImage();
-            instance.carregaInvUI();
+            AtualizarInventario();
         }
         var CaixasUI = instance.answersText;
         var RespostasDialogos = dialogue.answers;
@@ -173,7 +181,7 @@ public class UIManager : MonoBehaviour
             if (indiceUI < RespostasDialogos.Length)
             {
                 if (Inventory.HasItem(RespostasDialogos[indiceRespostaDialogo].conditionalItem) || RespostasDialogos[indiceRespostaDialogo].conditionalItem == null)
-                {
+                { 
                     CaixasUI[indiceUI].text = RespostasDialogos[indiceRespostaDialogo].playerAnswer;
                     CaixasUI[indiceUI].GetComponent<AnswerButton>().dialogue = RespostasDialogos[indiceRespostaDialogo];
                     CaixasUI[indiceUI].gameObject.SetActive(true);
