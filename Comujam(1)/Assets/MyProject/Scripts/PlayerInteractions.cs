@@ -44,7 +44,6 @@ public class PlayerInteractions : MonoBehaviour
                     UIManager.DisableInteraction();
                     interactRoutine = Interact(interactable);
                     StartCoroutine(interactRoutine);
-                    Debug.Log("Obj");
                     //if (interactable.gameObject.name == "caixa_de_som")
                     //{
                     //    if (estadoCaixaDeSom == 0)
@@ -57,18 +56,15 @@ public class PlayerInteractions : MonoBehaviour
             else if (controller.CursorOnGround())
             {
                 UIManager.SetCursors(ObjectType.ground);
-                Debug.Log("chao");
             }
             else 
             {
                 UIManager.SetCursors(ObjectType.none);
-                Debug.Log("fora");
             }
         }
         else
         {
             UIManager.SetCursors(ObjectType.none);
-            Debug.Log("forao");
         }
     }
 

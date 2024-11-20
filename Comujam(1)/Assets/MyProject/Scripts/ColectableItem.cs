@@ -12,7 +12,6 @@ public class ColectableItem : Interactable
         if(!pego&& !Inventory.HasItem(item))
         {
             Inventory.SetItem(item);
-            Debug.Log("Coletou " + item.itemName);
             this.pego = true;
         }
         if (destruir)

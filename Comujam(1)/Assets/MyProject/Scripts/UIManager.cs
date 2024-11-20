@@ -77,10 +77,8 @@ public class UIManager : MonoBehaviour
 
         if (interactable.conditionalItem != null)
         {
-            Debug.Log("Tem item condicional");
             if (Inventory.HasItem(interactable.conditionalItem))
             {
-                Debug.Log("Tem item");
                 instance.interactionText.text = interactable.conditionalText;
                 if (interactable.useItem) 
                 {
@@ -90,13 +88,11 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Jogador n tem nada");
                 instance.interactionText.text = interactable.text;
             }
         }
         else
         {
-            Debug.Log("Não tem item condicional");
             instance.interactionText.text = interactable.text;
         }
         instance.interactionPanel.SetActive(true);
