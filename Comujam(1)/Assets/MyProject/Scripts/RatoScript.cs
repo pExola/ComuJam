@@ -12,6 +12,7 @@ public class RatoScript : MonoBehaviour
     public Vector3 toca;
     private NavMeshAgent agentRato;
     private int destAtual=0;
+    private bool retornandoParaToca = false;
     void Start()
     {
         agentRato = GetComponent<NavMeshAgent>();
@@ -24,15 +25,38 @@ public class RatoScript : MonoBehaviour
         {
             movimentar();
         }
+        /*else if (retornandoParaToca) 
+        {
+            retornarParaToca();
+        }*/
     }
     public void movimentar()
     {
+        if (retornandoParaToca) return;
 
         Vector3 pos = pontosDeViagem[destAtual % pontosDeViagem.Count];
         
         agentRato.SetDestination(pos);
-        if (agentRato.velocity.magnitude == 0){
+        if (agentRato.velocity.magnitude == 0)
+        {
             destAtual += 1;
         }
     }
+
+   /* public void retornarParaToca()
+    {
+        agentRato.SetDestination(toca);
+
+        if (!agentRato.pathPending && agentRato.remainingDistance <= agentRato.stoppingDistance)
+        {
+            retornandoParaToca = false; 
+        }
+    }
+
+    public void AtivarRetornoParaToca()
+    {
+        retornandoParaToca = true;
+        emAlerta = false; 
+    }*/
 }
+
