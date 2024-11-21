@@ -4466,7 +4466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31caf34c34ff2a444a11c3351a8c4198, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.293
+      value: -24.23
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31caf34c34ff2a444a11c3351a8c4198, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4474,7 +4474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31caf34c34ff2a444a11c3351a8c4198, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.9898
+      value: 2.96
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31caf34c34ff2a444a11c3351a8c4198, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5647,7 +5647,9 @@ MonoBehaviour:
   - {x: -16.54, y: 5.71, z: 3.41}
   - {x: -14.6, y: 5.71, z: 2.95}
   - {x: -15.2, y: 5.71, z: -2.31}
-  toca: {x: 0, y: 0, z: 0}
+  toca: {x: -24.2951, y: 5.603, z: 3.6702}
+  pontoInicial: {x: -24.27, y: 5.7341, z: 3.04}
+  pontoDestino: {x: -14.27, y: 5.7341, z: -1.9}
 --- !u!95 &2089987601
 Animator:
   serializedVersion: 5
@@ -5715,13 +5717,13 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2.93
+  m_Speed: 4.1
   m_Acceleration: 4.16
   avoidancePriority: 50
-  m_AngularSpeed: 143.88
+  m_AngularSpeed: 351.01
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
@@ -6151,6 +6153,8 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 923878827}
+  - {fileID: 1684033158}
+  - {fileID: 1261500050}
   - {fileID: 1154927006}
   - {fileID: 1903188111}
   - {fileID: 6979119}
@@ -6161,8 +6165,6 @@ SceneRoots:
   - {fileID: 337624614}
   - {fileID: 1202482259}
   - {fileID: 1401409316}
-  - {fileID: 1684033158}
-  - {fileID: 1261500050}
   - {fileID: 371141547}
   - {fileID: 2005018820}
   - {fileID: 1593760906}
