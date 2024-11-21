@@ -18,13 +18,13 @@ public class InteractableItem : Interactable
 
             if (isPlaying)
             {
-                
-                //StartCoroutine(DesativarSomAposTempo(5f));
+
+                StartCoroutine(DesativarSomAposTempo(5f));
             }
         }
     }
 
-    /*private IEnumerator DesativarSomAposTempo(float duracao)
+    private IEnumerator DesativarSomAposTempo(float duracao)
     {
         // Espera pela duração especificada
         yield return new WaitForSeconds(duracao);
@@ -37,10 +37,10 @@ public class InteractableItem : Interactable
         RatoScript.emAlerta = false;
 
         // Chama o método para o rato retornar à toca
-        RatoScript rato = FindObjectOfType<RatoScript>();
-        if (rato != null)
-        {
-            rato.AtivarRetornoParaToca();
-        }
-    }*/
+        //RatoScript rato = FindObjectOfType<RatoScript>();
+        //if (rato != null)
+        //{
+        //    rato.AtivarRetornoParaToca();
+        //}
+    }
 }

@@ -13,9 +13,12 @@ public class RatoScript : MonoBehaviour
     private NavMeshAgent agentRato;
     private int destAtual=0;
     private bool retornandoParaToca = false;
+    private Vector3 posInicial;
     void Start()
     {
         agentRato = GetComponent<NavMeshAgent>();
+        var position = GetComponent<Transform>().position;
+        posInicial = new Vector3(position.x, position.y, position.z);
     }
 
     // Update is called once per frame
@@ -24,6 +27,10 @@ public class RatoScript : MonoBehaviour
         if (emAlerta)
         {
             movimentar();
+        }
+        else
+        {
+            agentRato.SetDestination(posInicial);
         }
         /*else if (retornandoParaToca) 
         {
