@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
@@ -14,24 +15,27 @@ public class Teleport : Interactable
     public NavMeshAgent agent;
     public string cena;
     public GameObject escotilha;
+    public bool enabled = true;
     public async override void Interact()
     {
         if (isInteracting)
             return;
-
-        isInteracting = true;
-        Debug.Log($"{text} teleportanto!");
-        await Task.Delay(1000);
-        if (escotilha != null)
+        if (enabled)
         {
-            var animatorEscotilha = escotilha.GetComponent<Animator>();
-            if (animatorEscotilha != null)
+            isInteracting = true;
+            Debug.Log($"{text} teleportanto!");
+            await Task.Delay(1000);
+            if (escotilha != null)
             {
-                animatorEscotilha.SetBool("isOpening", true);
-                await Task.Delay(1000);
-                animatorEscotilha.SetBool("isOpening", false);
+                var animatorEscotilha = escotilha.GetComponent<Animator>();
+                if (animatorEscotilha != null)
+                {
+                    animatorEscotilha.SetBool("isOpening", true);
+                    await Task.Delay(1000);
+                    animatorEscotilha.SetBool("isOpening", false);
+                }
             }
+            SceneManager.LoadScene(cena);
         }
-        SceneManager.LoadScene(cena);
     }
 }

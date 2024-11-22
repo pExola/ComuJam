@@ -7,19 +7,42 @@ public class InteractableItem : Interactable
 {
     public GameObject objeto;
     public Animator animator;
+    public Item conditionalItem;
+    public bool acionarRato;
+    public Teleport doorToEnable;
     public override void Interact()
     {
         Debug.Log("Interagindo");
         if(animator != null)
         {
-            bool isPlaying = !animator.GetBool("isPlaying");
-            animator.SetBool("isPlaying", isPlaying);
-            RatoScript.emAlerta = isPlaying;
-
-            if (isPlaying)
+            if (conditionalItem)
             {
+                if (Inventory.HasItem(conditionalItem))
+                {
+                    bool isPlaying = !animator.GetBool("isPlaying");
+                    animator.SetBool("isPlaying", isPlaying);
+                }
+                if (doorToEnable)
+                {
+                    doorToEnable.enabled = true;
+                }
+            }
+            else
+            {
+                bool isPlaying = !animator.GetBool("isPlaying");
+                animator.SetBool("isPlaying", isPlaying);
+                if (acionarRato)
+                {
+                    RatoScript.emAlerta = isPlaying;
 
-                StartCoroutine(DesativarSomAposTempo(5f));
+                    if (isPlaying)
+                    {
+
+                        StartCoroutine(DesativarSomAposTempo(5f));
+                    }
+
+                }
+
             }
         }
     }
