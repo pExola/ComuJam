@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InteractableItem : Interactable
 {
@@ -10,22 +11,29 @@ public class InteractableItem : Interactable
     public Item conditionalItem;
     public bool acionarRato;
     public Teleport doorToEnable;
+    public bool uniqueInteract;
+    [SerializeField] private bool interacted;
+    public UnityEvent iniciarEvento;
     public override void Interact()
     {
         Debug.Log("Interagindo");
+        
         if(animator != null)
         {
+            
             if (conditionalItem)
             {
-                if (Inventory.HasItem(conditionalItem))
+                if (Inventory.HasItem(conditionalItem) && !interacted)
                 {
                     bool isPlaying = !animator.GetBool("isPlaying");
                     animator.SetBool("isPlaying", isPlaying);
+                    StartCoroutine(InvokeEventAfterDelay(3f));
+
                 }
-                if (doorToEnable)
-                {
-                    doorToEnable.enabled = true;
-                }
+                //if (doorToEnable)
+                //{
+                //    doorToEnable.enabled = true;
+                //}
             }
             else
             {
@@ -45,6 +53,7 @@ public class InteractableItem : Interactable
 
             }
         }
+        interacted = true;
     }
 
     private IEnumerator DesativarSomAposTempo(float duracao)
@@ -65,5 +74,10 @@ public class InteractableItem : Interactable
         //{
         //    rato.AtivarRetornoParaToca();
         //}
+    }
+    private IEnumerator InvokeEventAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        iniciarEvento.Invoke();
     }
 }

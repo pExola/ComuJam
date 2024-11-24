@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,14 +9,19 @@ public class RatoScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public static bool emAlerta = false;
+    private GameObject rato;
     public List<Vector3> pontosDeViagem;
     public Vector3 toca;
     private NavMeshAgent agentRato;
     private int destAtual=0;
     private bool retornandoParaToca = false;
     private Vector3 posInicial;
+    public Transform posEstante,posEscotilha;
+    public Teleport porta;
+    [SerializeField] private bool estadoNormal = true;
     void Start()
     {
+        rato = gameObject;
         agentRato = GetComponent<NavMeshAgent>();
         var position = GetComponent<Transform>().position;
         posInicial = new Vector3(position.x, position.y, position.z);
@@ -24,18 +30,18 @@ public class RatoScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (emAlerta)
+        if (estadoNormal)
         {
-            movimentar();
+            if (emAlerta)
+            {
+                movimentar();
+            }
+            else
+            {
+                agentRato.SetDestination(posInicial);
+            }
+
         }
-        else
-        {
-            agentRato.SetDestination(posInicial);
-        }
-        /*else if (retornandoParaToca) 
-        {
-            retornarParaToca();
-        }*/
     }
     public void movimentar()
     {
@@ -49,21 +55,68 @@ public class RatoScript : MonoBehaviour
             destAtual += 1;
         }
     }
-
-   /* public void retornarParaToca()
+    public void comecarComerQueijo()
     {
-        agentRato.SetDestination(toca);
-
-        if (!agentRato.pathPending && agentRato.remainingDistance <= agentRato.stoppingDistance)
+        StartCoroutine(comerQueijo());
+    }
+    IEnumerator comerQueijo()
+    {
+        bool walking =true;
+        agentRato.SetDestination(posEstante.position);
+        yield return new WaitForSeconds(0.1f);
+        while (walking)
         {
-            retornandoParaToca = false; 
+            if (agentRato.remainingDistance > 2)
+            {
+                yield return null;
+            }
+            else
+            {
+                walking = false;
+                agentRato.SetDestination(posEstante.position);
+            }
         }
+        yield return new WaitForSeconds(2.1f);
+        agentRato.SetDestination(posEscotilha.position);
+        walking = true;
+        yield return new WaitForSeconds(0.1f);
+        while (walking)
+        {
+            if (agentRato.remainingDistance > 2)
+            {
+                yield return null;
+            }
+            else
+            {
+                walking = false;
+                agentRato.SetDestination(posEscotilha.position);
+            }
+        }
+        porta.enabled = true;
+        rato.SetActive(false);
     }
 
-    public void AtivarRetornoParaToca()
+
+
+
+    public void desativarAlerta()
     {
-        retornandoParaToca = true;
-        emAlerta = false; 
-    }*/
+        emAlerta = false;
+    }
+
+    public void ativarAlerta()
+    {
+        emAlerta = true;
+    }
+    public void desativarEstadoNormal()
+    {
+        estadoNormal = false;
+    }
+
+    public void ativarEstadoNormal()
+    {
+        estadoNormal = true;
+    }
+
 }
 

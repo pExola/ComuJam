@@ -8,5 +8,6 @@ public class DialogueInteractable : Interactable
     public override void Interact()
     {
         UIManager.SetDialogue(dialogue);
+        //CameraClass.setPos(GetComponent<GameObject>().GetComponent<Transform>().transform.position);
     }
 }

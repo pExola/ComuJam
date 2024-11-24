@@ -176,7 +176,7 @@ public class UIManager : MonoBehaviour
             FinishDialogue();
             return;
         }
-
+        //CameraClass.setPos(dialogue.GetComponent<GameObject>().GetComponent<Transform>().transform.position);
         instance.inDialogue = true;
         SetCursors(ObjectType.text);
         DisableInteraction();
