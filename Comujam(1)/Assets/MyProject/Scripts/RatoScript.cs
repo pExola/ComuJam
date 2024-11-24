@@ -18,6 +18,7 @@ public class RatoScript : MonoBehaviour
     private Vector3 posInicial;
     public Transform posEstante,posEscotilha;
     public Teleport porta;
+    public GameObject queijo,queijoNaBoca;
     [SerializeField] private bool estadoNormal = true;
     void Start()
     {
@@ -79,6 +80,8 @@ public class RatoScript : MonoBehaviour
         yield return new WaitForSeconds(2.1f);
         agentRato.SetDestination(posEscotilha.position);
         walking = true;
+        queijo.SetActive(false);
+        queijoNaBoca.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         while (walking)
         {

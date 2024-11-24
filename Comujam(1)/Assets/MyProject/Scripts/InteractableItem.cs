@@ -28,6 +28,7 @@ public class InteractableItem : Interactable
                     bool isPlaying = !animator.GetBool("isPlaying");
                     animator.SetBool("isPlaying", isPlaying);
                     StartCoroutine(InvokeEventAfterDelay(3f));
+                    interacted = true;
 
                 }
                 //if (doorToEnable)
@@ -53,7 +54,6 @@ public class InteractableItem : Interactable
 
             }
         }
-        interacted = true;
     }
 
     private IEnumerator DesativarSomAposTempo(float duracao)
