@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum ObjectType
 {
-    ground, door, text, dialogue, colectable, none
+    ground, door, text, dialogue, colectable, none, cursorBlue
 }
 
 public abstract class Interactable : MonoBehaviour

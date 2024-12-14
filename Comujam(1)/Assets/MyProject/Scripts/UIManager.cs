@@ -42,9 +42,13 @@ public class UIManager : MonoBehaviour
         {
             Destroy(instance);
         }
-        foreach (var item in Inventory.GetItems())
+        if (Inventory.instance != null)
         {
-            SetInventoryImage(item);
+            foreach (var item in Inventory.GetItems())
+            {
+                SetInventoryImage(item);
+            }
+
         }
     }
     public static void AtualizarInventario()
@@ -171,7 +175,7 @@ public class UIManager : MonoBehaviour
         if (instance == null)
             return;
 
-        if (dialogue.isEnd)
+        if (dialogue.isEnd)     
         {
             FinishDialogue();
             return;

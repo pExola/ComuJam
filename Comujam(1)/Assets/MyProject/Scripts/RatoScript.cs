@@ -16,10 +16,11 @@ public class RatoScript : MonoBehaviour
     private int destAtual=0;
     private bool retornandoParaToca = false;
     private Vector3 posInicial;
-    public Transform posEstante,posEscotilha;
+    public Transform posEstante,posEscotilha,posEsconderijoBarril;
     public Teleport porta;
     public GameObject queijo,queijoNaBoca;
     [SerializeField] private bool estadoNormal = true;
+    
     void Start()
     {
         rato = gameObject;
@@ -60,6 +61,10 @@ public class RatoScript : MonoBehaviour
     {
         StartCoroutine(comerQueijo());
     }
+    public void seEsconder()
+    {
+        StartCoroutine(esconderBarril());
+    }
     IEnumerator comerQueijo()
     {
         bool walking =true;
@@ -97,6 +102,26 @@ public class RatoScript : MonoBehaviour
         }
         porta.enabled = true;
         rato.SetActive(false);
+    }
+    IEnumerator esconderBarril()
+    {
+        yield return new WaitForSeconds(1.1f);
+        bool walking = true;
+        agentRato.SetDestination(posEsconderijoBarril.position);
+        yield return new WaitForSeconds(0.1f);
+        while (walking)
+        {
+            if (agentRato.remainingDistance > 2)
+            {
+                yield return null;
+            }
+            else
+            {
+                walking = false;
+                agentRato.SetDestination(posEsconderijoBarril.position);
+            }
+        }
+        yield return new WaitForSeconds(2.1f);
     }
 
 
