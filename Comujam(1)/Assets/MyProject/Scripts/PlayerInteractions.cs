@@ -10,22 +10,21 @@ public class PlayerInteractions : MonoBehaviour
     Interactable currentInteractable;
     public GameObject caixaDeSom;
     private Animator caixaDeSomAnimator;
-    public int estadoCaixaDeSom=0;
+    public int estadoCaixaDeSom = 0;
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<PlayerController>();
-        if(caixaDeSom != null)
+        if (caixaDeSom != null)
         {
             caixaDeSomAnimator = caixaDeSom.GetComponent<Animator>();
         }
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //CaixaDeSomStateMachine();
         if (UIManager.InDialogue())
             return;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -39,7 +38,7 @@ public class PlayerInteractions : MonoBehaviour
             {
                 UIManager.SetCursors(interactable.objectType);
 
-                if (Input.GetButtonDown("Fire1")) 
+                if (Input.GetButtonDown("Fire1"))
                 {
                     UIManager.DisableInteraction();
                     interactRoutine = Interact(interactable);
@@ -57,7 +56,7 @@ public class PlayerInteractions : MonoBehaviour
             {
                 UIManager.SetCursors(ObjectType.ground);
             }
-            else 
+            else
             {
                 UIManager.SetCursors(ObjectType.none);
             }
@@ -68,18 +67,18 @@ public class PlayerInteractions : MonoBehaviour
         }
     }
 
-    IEnumerator Interact(Interactable interactable) 
+    IEnumerator Interact(Interactable interactable)
     {
         bool walking = true;
         controller.agent.SetDestination(interactable.transform.position);
         yield return new WaitForSeconds(0.1f);
-        while (walking) 
+        while (walking)
         {
             if (controller.agent.remainingDistance > 2)
             {
                 yield return null;
             }
-            else 
+            else
             {
                 walking = false;
                 controller.agent.SetDestination(transform.position);
@@ -95,19 +94,19 @@ public class PlayerInteractions : MonoBehaviour
         {
             caixaDeSomAnimator.SetBool("isPlaying", false);
         }
-        else if(estadoCaixaDeSom == 1)
+        else if (estadoCaixaDeSom == 1)
         {
             caixaDeSomAnimator.SetBool("isPlaying", true);
             Task.Delay(7000);
             estadoCaixaDeSom = 0;
         }
     }
-    public void CancelInteraction() 
+    public void CancelInteraction()
     {
-        if (interactRoutine != null) 
+        if (interactRoutine != null)
             StopCoroutine(interactRoutine);
 
-        if (currentInteractable != null) 
+        if (currentInteractable != null)
         {
             currentInteractable.isInteracting = false;
             currentInteractable = null;

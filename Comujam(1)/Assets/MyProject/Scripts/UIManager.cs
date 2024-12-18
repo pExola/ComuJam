@@ -3,54 +3,72 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
+
+    // Painel e texto de interação
     public GameObject interactionPanel;
     public TMP_Text interactionText;
+
+    // Retrato e textos de respostas do diálogo
     public Image portrait;
     public TMP_Text[] answersText;
-    bool inDialogue;
-    TextInteraction textInteraction;
 
+    // Controle de diálogo
+    private bool inDialogue;
+    private TextInteraction currentInteraction;
+    private bool skipDialogue;
+
+    // Cursores personalizados
     public Texture2D[] cursors;
 
+    // Inventário UI
     public Image[] inventoryImages;
     public Image[] inventorySelectors;
 
-    public static bool InDialogue() 
-    {
-        if (instance == null)
-            return false;
+    // Velocidade do texto gradual
+    public float textSpeed = 0.05f;
+    private Coroutine typingCoroutine;
 
-        return instance.inDialogue;
+    // Variável de instância para armazenar o diálogo atual
+    private Dialogue currentDialogue;
+
+    // Verificar estado de diálogo
+    public static bool InDialogue()
+    {
+        return instance != null && instance.inDialogue;
     }
 
-    // Start is called before the first frame update
+    // Awake: Inicializar a instância e carregar UI
     private void Awake()
     {
-        carregaInvUI();
-    }
-    public void carregaInvUI() {
         if (instance == null)
         {
             instance = this;
         }
         else
         {
-            Destroy(instance);
+            Destroy(gameObject);
         }
+
+        carregaInvUI();
+    }
+
+    // Carregar inventário na interface
+    public void carregaInvUI()
+    {
         if (Inventory.instance != null)
         {
             foreach (var item in Inventory.GetItems())
             {
                 SetInventoryImage(item);
             }
-
         }
     }
+
+    // Atualizar inventário
     public static void AtualizarInventario()
     {
         RemoveAllInventoryImage();
@@ -59,180 +77,206 @@ public class UIManager : MonoBehaviour
             SetInventoryImage(item);
         }
     }
-    public static void SetCursors(ObjectType objectType) 
+
+    // Alterar cursor conforme o tipo de objeto
+    public static void SetCursors(ObjectType objectType)
     {
-        if (instance == null)
-            return;
+        if (instance == null) return;
         Cursor.SetCursor(instance.cursors[(int)objectType], Vector2.zero, CursorMode.Auto);
     }
 
-
+    // Selecionar item no inventário
     public static void selectItem(int id)
     {
-        for(int x = 0; x < instance.inventorySelectors.Length; x++)
-        {
-            if (x == id)
-            {
-                instance.inventorySelectors[x].gameObject.SetActive(true);
-            }
-            else
-            {
-                instance.inventorySelectors[x].gameObject.SetActive(false);
+        if (instance == null) return;
 
-            }
+        for (int i = 0; i < instance.inventorySelectors.Length; i++)
+        {
+            instance.inventorySelectors[i].gameObject.SetActive(i == id);
         }
     }
-    public static void SetInventoryImage(Item item) 
-    {
-        if (instance == null)
-            return;
 
-        for (int i = 0; i < instance.inventoryImages.Length; i++) 
+    // Definir imagem do item no inventário
+    public static void SetInventoryImage(Item item)
+    {
+        if (instance == null) return;
+
+        foreach (var image in instance.inventoryImages)
         {
-            if (!instance.inventoryImages[i].gameObject.activeInHierarchy) 
+            if (!image.gameObject.activeInHierarchy)
             {
-                instance.inventoryImages[i].sprite = item.itemImage;
-                instance.inventoryImages[i].gameObject.SetActive(true);
+                image.sprite = item.itemImage;
+                image.gameObject.SetActive(true);
                 break;
             }
         }
     }
 
-    public static void SetText(TextInteraction interactable) 
+    // Configurar texto de interação
+    public static void SetText(TextInteraction interactable)
     {
-        if(instance == null) 
-            return;
+        if (instance == null) return;
 
         instance.portrait.sprite = interactable.portraitImage;
 
-        if (interactable.conditionalItem != null)
+        if (interactable.conditionalItem != null && Inventory.HasItem(interactable.conditionalItem))
         {
-            if (Inventory.HasItem(interactable.conditionalItem))
+            instance.interactionText.text = interactable.conditionalText;
+            if (interactable.useItem)
             {
-                instance.interactionText.text = interactable.conditionalText;
-                if (interactable.useItem) 
+                if (interactable.conditionalItem.removeOnDialogue)
                 {
-                    if (interactable.conditionalItem.removeOnDialogue)
-                    {
-                        Inventory.UseItemInDialogue(interactable.conditionalItem);
-                    }
-                    else
-                    {
-                        Inventory.UseItem(interactable.conditionalItem);
-                        interactable.onUseItem.Invoke();
-                    }
+                    Inventory.UseItemInDialogue(interactable.conditionalItem);
                 }
-            }
-            else
-            {
-                instance.interactionText.text = interactable.text;
+                else
+                {
+                    Inventory.UseItem(interactable.conditionalItem);
+                    interactable.onUseItem.Invoke();
+                }
             }
         }
         else
         {
             instance.interactionText.text = interactable.text;
         }
+
         instance.interactionPanel.SetActive(true);
-        instance.textInteraction = interactable;
+        instance.currentInteraction = interactable;
     }
-    public static void DisableInteraction() 
+
+    // Desativar painel de interação
+    public static void DisableInteraction()
     {
-        if (instance == null)
-            return;
+        if (instance == null) return;
 
         instance.interactionPanel.SetActive(false);
-        if (instance.textInteraction != null)
-            instance.textInteraction.isInteracting = false;
+        if (instance.currentInteraction != null)
+        {
+            instance.currentInteraction.isInteracting = false;
+        }
     }
 
-    public static void RemoveInventoryImage (Item item) 
+    // Remover imagem do inventário
+    public static void RemoveInventoryImage(Item item)
     {
-        if (instance == null)
-            return;
+        if (instance == null) return;
 
-        for (int i = 0; i < instance.inventoryImages.Length; i++) 
+        foreach (var image in instance.inventoryImages)
         {
-            if (instance.inventoryImages[i].sprite == item.itemImage) 
+            if (image.sprite == item.itemImage)
             {
-                instance.inventoryImages[i].gameObject.SetActive(false);
+                image.gameObject.SetActive(false);
                 break;
             }
         }
     }
+
+    // Remover todas as imagens do inventário
     public static void RemoveAllInventoryImage()
     {
-        if (instance == null)
-            return;
+        if (instance == null) return;
 
-        for (int i = 0; i < instance.inventoryImages.Length; i++)
+        foreach (var image in instance.inventoryImages)
         {
-            instance.inventoryImages[i].gameObject.SetActive(false);    
+            image.gameObject.SetActive(false);
         }
     }
 
+    // Configurar diálogo
     public static void SetDialogue(Dialogue dialogue)
     {
-        if (instance == null)
-            return;
+        if (instance == null) return;
 
-        if (dialogue.isEnd)     
+        if (dialogue.isEnd)
         {
             FinishDialogue();
             return;
         }
-        //CameraClass.setPos(dialogue.GetComponent<GameObject>().GetComponent<Transform>().transform.position);
+
         instance.inDialogue = true;
         SetCursors(ObjectType.text);
         DisableInteraction();
+
+        instance.currentDialogue = dialogue;
         instance.portrait.sprite = dialogue.portrait;
-        instance.interactionText.text = dialogue.dialogueText;
-        if (dialogue.recompensaDialogo != null)
+
+        instance.StartCoroutine(ShowDialogueTextGradually(dialogue.dialogueText));
+
+        // Recompensa do diálogo
+        if (dialogue.recompensaDialogo != null && !Inventory.HasItem(dialogue.recompensaDialogo))
         {
-            if (!Inventory.HasItem(dialogue.recompensaDialogo))
-            {
-                Inventory.SetItem(dialogue.recompensaDialogo); 
-            }
+            Inventory.SetItem(dialogue.recompensaDialogo);
         }
+
+        // Remoção de item condicional
         if (dialogue.removeConditionalItem)
         {
             Inventory.RemoveItem(dialogue.conditionalItem);
             AtualizarInventario();
         }
-        var CaixasUI = instance.answersText;
-        var RespostasDialogos = dialogue.answers;
-        foreach(var caixa in CaixasUI)
+
+        // Configurar respostas
+        foreach (var answerText in instance.answersText)
         {
-            caixa.gameObject.SetActive(false);
+            answerText.gameObject.SetActive(false);
         }
-        for (int indiceUI = 0,indiceRespostaDialogo=0; indiceRespostaDialogo < RespostasDialogos.Length; indiceRespostaDialogo++)
-        {
-            if (indiceUI < RespostasDialogos.Length)
-            {
-                if (Inventory.HasItem(RespostasDialogos[indiceRespostaDialogo].conditionalItem) || RespostasDialogos[indiceRespostaDialogo].conditionalItem == null)
-                { 
-                    CaixasUI[indiceUI].text = RespostasDialogos[indiceRespostaDialogo].playerAnswer;
-                    CaixasUI[indiceUI].GetComponent<AnswerButton>().dialogue = RespostasDialogos[indiceRespostaDialogo];
-                    CaixasUI[indiceUI].gameObject.SetActive(true);
-                    indiceUI += 1;
-                }
-            }
-        }
+
         instance.interactionPanel.SetActive(true);
+
     }
 
-    public static void FinishDialogue() 
+    private static IEnumerator ShowDialogueTextGradually(string text)
     {
-        if (instance == null)
-            return;
-
-        for (int i = 0; i < instance.answersText.Length; i++) 
+        instance.interactionText.text = "";  // Limpar o texto atual
+        for (int i = 0; i < text.Length; i++)
         {
-            instance.answersText[i].gameObject.SetActive(false);
+            // Verificar se o jogador pressionou o botão de pular
+            
+
+            instance.interactionText.text += text[i]; // Adiciona uma letra por vez
+            yield return new WaitForSeconds(0.05f); // Tempo para atraso entre cada letra
+        }
+        // Após o texto do diálogo ser totalmente exibido, começar a exibir as respostas
+        yield return new WaitForSeconds(0.5f); // Aguardar um tempo extra, se necessário, após o diálogo completo
+        instance.StartCoroutine(ShowAnswersGradually(instance.currentDialogue));
+    }
+
+    private static IEnumerator ShowAnswersGradually(Dialogue dialogue)
+    {
+        if (instance.currentDialogue == null) yield break; // Se não houver diálogo, sair
+
+        int index = 0;
+        foreach (var answer in instance.currentDialogue.answers)
+        {
+            if (index < instance.answersText.Length &&
+                (answer.conditionalItem == null || Inventory.HasItem(answer.conditionalItem)))
+            {
+                instance.answersText[index].text = answer.playerAnswer;
+                instance.answersText[index].GetComponent<AnswerButton>().dialogue = answer;
+
+                // Exibir a resposta com um pequeno atraso
+                yield return new WaitForSeconds(0.5f); // Tempo entre a exibição das respostas
+
+                instance.answersText[index].gameObject.SetActive(true);
+                index++;
+            }
+        }
+
+    }
+
+
+
+    // Finalizar diálogo
+    public static void FinishDialogue()
+    {
+        if (instance == null) return;
+
+        foreach (var text in instance.answersText)
+        {
+            text.gameObject.SetActive(false);
         }
 
         instance.inDialogue = false;
         DisableInteraction();
     }
-
-
 }
