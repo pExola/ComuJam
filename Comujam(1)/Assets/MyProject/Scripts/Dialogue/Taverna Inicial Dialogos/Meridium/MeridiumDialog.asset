@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
-  m_Name: MeridiumDialog 5
+  m_Name: MeridiumDialog
   m_EditorClassIdentifier: 
   answers:
-  - {fileID: 11400000, guid: abf7a50e14ce85b4aa76f022650cb826, type: 2}
-  dialogueText: 'Meridium: Muito obrigado!'
-  playerAnswer: Estava na toca do rato
+  - {fileID: 11400000, guid: 9dc2f8337c93a9f4eb45db4cbeb6df5c, type: 2}
+  - {fileID: 11400000, guid: 44c64f23817853d4e86441148771f7ca, type: 2}
+  dialogueText: "Meridium: Thandrel! Voc\xEA finalmente acordou... Achei que ainda
+    estivesse perdido entre as n\xE9voas do hidromel. Fico feliz em ver que est\xE1
+    em p\xE9, ao menos."
+  playerAnswer: ou
   portrait: {fileID: 21300000, guid: dac8a9203c0971c42aff975701ee6dc5, type: 3}
   isEnd: 0
-  conditionalItem: {fileID: 11400000, guid: 96ba9910a7c88de4d9caf68514007aee, type: 2}
-  recompensaDialogo: {fileID: 11400000, guid: a185106305323ba46ba45a128602e885, type: 2}
-  removeConditionalItem: 1
+  conditionalItem: {fileID: 0}
+  recompensaDialogo: {fileID: 0}
+  removeConditionalItem: 0

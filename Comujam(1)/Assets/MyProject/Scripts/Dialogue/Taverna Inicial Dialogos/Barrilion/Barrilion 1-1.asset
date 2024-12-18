@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
-  m_Name: Dialogo 1-1
+  m_Name: Barrilion 1-1
   m_EditorClassIdentifier: 
   answers:
-  - {fileID: 11400000, guid: 093bbd03c3bfc38469ec6e3e8728f9c6, type: 2}
-  dialogueText: Boa sorte, cuidado com a aranha que voces invocaram
-  playerAnswer: "Meu deus n\xE3o lembro de nada, preciso descobrir onde est\xE3o
-    meus poderes"
+  - {fileID: 11400000, guid: 4af302f5d05ac6e40ab3d76a1cb9a7b8, type: 2}
+  dialogueText: "Barrilion: Ah, bom velho mago, sua reputa\xE7\xE3o realmente precede
+    sua ressaca. Mas, escute bem, voc\xEA n\xE3o \xE9 o \xFAnico que perdeu algo
+    aqui"
+  playerAnswer: "Minha dignidade e... meu livro de feiti\xE7os. Sem ele, estou t\xE3o
+    \xFAtil quanto um goblin sem dentes!"
   portrait: {fileID: 21300000, guid: 375177b77201c134aa933036812b5cb2, type: 3}
   isEnd: 0
   conditionalItem: {fileID: 0}
   recompensaDialogo: {fileID: 0}
+  removeConditionalItem: 0

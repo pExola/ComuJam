@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
+  m_Name: Rato 1-1
+  m_EditorClassIdentifier: 
+  answers:
+  - {fileID: 11400000, guid: 607dac1b9bdf85a4d80e2df2eaeb6871, type: 2}
+  dialogueText: "Rato: Sou um astro da arte contempor\xE2nea, o mestre das dan\xE7as
+    e das acrobacias, o grande Ratvinci! Enquanto outros roem madeira, eu roubo olhares.
+    Tenho meu pr\xF3prio ritmo, se \xE9 que me entende."
+  playerAnswer: "Quem... \xE9 voc\xEA ?"
+  portrait: {fileID: 21300000, guid: e7100dc1b2050b142b20050f2d411f0f, type: 3}
+  isEnd: 0
+  conditionalItem: {fileID: 0}
+  recompensaDialogo: {fileID: 0}
+  removeConditionalItem: 0

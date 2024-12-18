@@ -10,13 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
-  m_Name: Dialogo 1-2
+  m_Name: Barrilion1
   m_EditorClassIdentifier: 
   answers:
-  - {fileID: 11400000, guid: 093bbd03c3bfc38469ec6e3e8728f9c6, type: 2}
-  dialogueText: "U\xE9, essa festa que voce deu, n\xE3o era sua despedida de solteiro?"
-  playerAnswer: Como assim casamento?
+  - {fileID: 11400000, guid: 7ac5f8b98e525a342bf57e0ba0adcdd3, type: 2}
+  - {fileID: 11400000, guid: b8278d7a1f2efbd4990b00f728543438, type: 2}
+  - {fileID: 11400000, guid: a80229d329267a64fb525591f3b79d71, type: 2}
+  dialogueText: "Barrilion: Ah, veja quem finalmente despertou! Bem-vindo de volta
+    \xE0 Taverna da Lua Minguante. Pelo estado em que voc\xEA estava ontem, diria
+    que tentou conjurar o pr\xF3prio deus do hidromel. Perdeu algo importante?"
+  playerAnswer: --Sair
   portrait: {fileID: 21300000, guid: 375177b77201c134aa933036812b5cb2, type: 3}
   isEnd: 0
   conditionalItem: {fileID: 0}
   recompensaDialogo: {fileID: 0}
+  removeConditionalItem: 0

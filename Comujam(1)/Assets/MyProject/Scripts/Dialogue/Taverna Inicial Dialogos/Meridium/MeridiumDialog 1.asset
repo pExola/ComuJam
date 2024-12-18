@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
-  m_Name: MeridiumDialog 3
+  m_Name: MeridiumDialog 1
   m_EditorClassIdentifier: 
   answers:
-  - {fileID: 11400000, guid: dc5a95458937bce4397c5327c9139c50, type: 2}
-  dialogueText: 'Meridium: O mago do FOGO!'
-  playerAnswer: "Quem \xE9 o malago?"
+  - {fileID: 11400000, guid: 6cabdc9859564524095d58c8dc6fde33, type: 2}
+  dialogueText: "Meridium: Sim, sim... houve algo de errado ontem. Eu... eu perdi
+    minha varinha. N\xE3o sei exatamente como, mas acho que foi quando... bem, quando
+    conjurei aquela aranha no por\xE3o."
+  playerAnswer: "Meridium? O que aconteceu? Voc\xEA... parece abalado."
   portrait: {fileID: 21300000, guid: dac8a9203c0971c42aff975701ee6dc5, type: 3}
   isEnd: 0
   conditionalItem: {fileID: 0}
   recompensaDialogo: {fileID: 0}
+  removeConditionalItem: 0

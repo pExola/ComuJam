@@ -95,6 +95,16 @@ public class PlayerController : MonoBehaviour
         {
             cursorOnGround = false;
         }
+
+        if (agent.velocity.magnitude == 0)
+        {
+            animacao.SetBool("isWalking", false);
+        }
+        else
+        {
+            animacao.SetBool("isWalking", true);
+        }
+
     }
 
     public bool CursorOnGround()

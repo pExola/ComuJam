@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -23,9 +24,12 @@ public class Inventory : MonoBehaviour
 
     public static void SetItem(Item item) 
     {
-        if (instance == null)
+        if (instance == null) 
+        {
+            Debug.LogError("Tentativa de adicionar um item nulo ao inventário!");
             return;
-
+        }
+           
         instance.items.Add(item);
         UIManager.SetInventoryImage(item);
 
@@ -34,8 +38,10 @@ public class Inventory : MonoBehaviour
     public static bool HasItem(Item item) 
     {
         if (instance == null)
-            return false;
-
+        {
+            Debug.LogError("Tentativa de verificar um item nulo no inventário!");
+            return false; 
+        }
         return instance.items.Contains(item);
     }
 

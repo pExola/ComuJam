@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
-  m_Name: MeridiumDialog 1
+  m_Name: Meridium3
   m_EditorClassIdentifier: 
   answers:
-  - {fileID: 11400000, guid: 6cabdc9859564524095d58c8dc6fde33, type: 2}
-  - {fileID: 11400000, guid: dc5a95458937bce4397c5327c9139c50, type: 2}
-  dialogueText: 'Meridium: Lembro de um aracnideo GIGANTE! E nunca mais vi o Malago'
-  playerAnswer: Voce lembra de algo? Estou sem meus poderes!
+  - {fileID: 11400000, guid: a80229d329267a64fb525591f3b79d71, type: 2}
+  dialogueText: "Meridium: Ah, Thandrel, sempre t\xE3o calmo! Por isso \xE9 o \xFAnico
+    mago da terra m\xE9dia a juntar os trapos. Traga minha varinha que o ajudarei."
+  playerAnswer: "Acalme-se Meridium, um problema de cada vez. Vamos recuperar sua
+    varinha primeiro, assim voc\xEA restaura um dos meus feiti\xE7os, pode ser?"
   portrait: {fileID: 21300000, guid: dac8a9203c0971c42aff975701ee6dc5, type: 3}
   isEnd: 0
   conditionalItem: {fileID: 0}
   recompensaDialogo: {fileID: 0}
+  removeConditionalItem: 0

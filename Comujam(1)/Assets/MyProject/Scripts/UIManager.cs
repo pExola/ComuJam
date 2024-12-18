@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class UIManager : MonoBehaviour
 
     // Variável de instância para armazenar o diálogo atual
     private Dialogue currentDialogue;
+
+    TextInteraction textInteraction;
 
     // Verificar estado de diálogo
     public static bool InDialogue()
@@ -115,33 +118,58 @@ public class UIManager : MonoBehaviour
     // Configurar texto de interação
     public static void SetText(TextInteraction interactable)
     {
-        if (instance == null) return;
+        if (instance == null)
+            return;
 
         instance.portrait.sprite = interactable.portraitImage;
 
-        if (interactable.conditionalItem != null && Inventory.HasItem(interactable.conditionalItem))
+        if (interactable.conditionalItem != null)
         {
-            instance.interactionText.text = interactable.conditionalText;
-            if (interactable.useItem)
+            if (Inventory.HasItem(interactable.conditionalItem))
             {
-                if (interactable.conditionalItem.removeOnDialogue)
+                instance.interactionText.text = interactable.conditionalText;
+                if (interactable.useItem)
                 {
-                    Inventory.UseItemInDialogue(interactable.conditionalItem);
+                    if (interactable.conditionalItem.removeOnDialogue)
+                    {
+                        Inventory.UseItemInDialogue(interactable.conditionalItem);
+                    }
+                    else
+                    {
+                        Inventory.UseItem(interactable.conditionalItem);
+                        interactable.onUseItem.Invoke();
+                    }
                 }
-                else
-                {
-                    Inventory.UseItem(interactable.conditionalItem);
-                    interactable.onUseItem.Invoke();
-                }
+            }
+            else
+            {
+                instance.interactionText.text = interactable.text;
             }
         }
         else
         {
             instance.interactionText.text = interactable.text;
         }
-
         instance.interactionPanel.SetActive(true);
-        instance.currentInteraction = interactable;
+        instance.textInteraction = interactable;
+
+        if (interactable.conditionalItem != null)
+        {
+            Debug.Log($"Verificando item condicional: {interactable.conditionalItem.itemName}");
+
+            if (Inventory.HasItem(interactable.conditionalItem))
+            {
+                Debug.Log("Item condicional encontrado no inventário.");
+            }
+            else
+            {
+                Debug.Log("Item condicional não encontrado no inventário.");
+            }
+        }
+        else
+        {
+            Debug.Log("Nenhum item condicional configurado.");
+        }
     }
 
     // Desativar painel de interação
@@ -176,9 +204,9 @@ public class UIManager : MonoBehaviour
     {
         if (instance == null) return;
 
-        foreach (var image in instance.inventoryImages)
+        for (int i = 0; i < instance.inventoryImages.Length; i++)
         {
-            image.gameObject.SetActive(false);
+            instance.inventoryImages[i].gameObject.SetActive(false);
         }
     }
 
@@ -200,12 +228,17 @@ public class UIManager : MonoBehaviour
         instance.currentDialogue = dialogue;
         instance.portrait.sprite = dialogue.portrait;
 
+        instance.interactionText.text = dialogue.dialogueText;
+
         instance.StartCoroutine(ShowDialogueTextGradually(dialogue.dialogueText));
 
         // Recompensa do diálogo
-        if (dialogue.recompensaDialogo != null && !Inventory.HasItem(dialogue.recompensaDialogo))
+        if (dialogue.recompensaDialogo != null)
         {
-            Inventory.SetItem(dialogue.recompensaDialogo);
+            if (!Inventory.HasItem(dialogue.recompensaDialogo))
+            {
+                Inventory.SetItem(dialogue.recompensaDialogo);
+            }
         }
 
         // Remoção de item condicional
@@ -223,6 +256,15 @@ public class UIManager : MonoBehaviour
 
         instance.interactionPanel.SetActive(true);
 
+        if (dialogue.conditionalItem != null)
+        {
+            Debug.Log($"Item condicional necessário: {dialogue.conditionalItem.itemName}");
+        }
+        else
+        {
+            Debug.Log("Este diálogo não exige item condicional.");
+        }
+
     }
 
     private static IEnumerator ShowDialogueTextGradually(string text)
@@ -230,9 +272,6 @@ public class UIManager : MonoBehaviour
         instance.interactionText.text = "";  // Limpar o texto atual
         for (int i = 0; i < text.Length; i++)
         {
-            // Verificar se o jogador pressionou o botão de pular
-            
-
             instance.interactionText.text += text[i]; // Adiciona uma letra por vez
             yield return new WaitForSeconds(0.05f); // Tempo para atraso entre cada letra
         }
@@ -263,8 +302,6 @@ public class UIManager : MonoBehaviour
         }
 
     }
-
-
 
     // Finalizar diálogo
     public static void FinishDialogue()
