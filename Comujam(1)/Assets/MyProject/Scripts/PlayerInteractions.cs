@@ -10,10 +10,12 @@ public class PlayerInteractions : MonoBehaviour
     Interactable currentInteractable;
     public GameObject caixaDeSom;
     private Animator caixaDeSomAnimator;
+    private Animator animacao;
     public int estadoCaixaDeSom = 0;
     // Start is called before the first frame update
     void Start()
     {
+        animacao = GetComponent<Animator>();
         controller = GetComponent<PlayerController>();
         if (caixaDeSom != null)
         {
@@ -55,6 +57,8 @@ public class PlayerInteractions : MonoBehaviour
             else if (controller.CursorOnGround())
             {
                 UIManager.SetCursors(ObjectType.ground);
+                animacao.SetBool("onAction", false);
+  
             }
             else
             {
@@ -86,6 +90,8 @@ public class PlayerInteractions : MonoBehaviour
         }
         interactable.Interact();
         currentInteractable = interactable;
+        animacao.SetBool("onAction", true);
+  
     }
 
     public void CaixaDeSomStateMachine()

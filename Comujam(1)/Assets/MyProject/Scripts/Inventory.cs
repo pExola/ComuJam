@@ -80,7 +80,9 @@ public class Inventory : MonoBehaviour
     public static Item GetItem(int id) {
         if (instance.items.Count > id)
         {
+       
             return instance.items[id];
+           
         }
         else
         {

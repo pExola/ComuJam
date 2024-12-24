@@ -31,7 +31,10 @@ public class Teleport : Interactable
                 if (animatorEscotilha != null)
                 {
                     animatorEscotilha.SetBool("isOpening", true);
-                    await Task.Delay(1000);
+
+                }
+                else
+                {
                     animatorEscotilha.SetBool("isOpening", false);
                 }
             }
