@@ -10,12 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
-  m_Name: ChaveCongelada 2
+  m_Name: Aranha2
   m_EditorClassIdentifier: 
   answers:
-  - {fileID: 11400000, guid: a80229d329267a64fb525591f3b79d71, type: 2}
-  dialogueText: "Creio que seja a chave da fechadura que est\xE1 l\xE1 em cima"
-  playerAnswer: ...
+  - {fileID: 11400000, guid: 14ca3838f24f4c5478bf0a2eb39d06f3, type: 2}
+  dialogueText: "Characn\xEDdea: \"Gelo eterno? Que presun\xE7\xE3o para um mago
+    incompleto! Mas gosto de voc\xEAs, sempre t\xE3o dram\xE1ticos. Respondam minha
+    charada, e talvez... s\xF3 talvez, eu libere este infeliz.\""
+  playerAnswer: "Lamento interromper sua refei\xE7\xE3o, \xF3 majestosa tecel\xE3,
+    mas esse mago \xE9 um dos meus. Solte-o, e prometo n\xE3o transformar sua teia
+    em gelo eterno."
   portrait: {fileID: 0}
   isEnd: 0
   conditionalItem: {fileID: 0}

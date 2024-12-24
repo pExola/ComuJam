@@ -972,6 +972,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c2836f91179291f40a4e5c0fba2f28d0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 398622823}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c2836f91179291f40a4e5c0fba2f28d0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 398622825}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c2836f91179291f40a4e5c0fba2f28d0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 398622826}
   m_SourcePrefab: {fileID: 100100000, guid: c2836f91179291f40a4e5c0fba2f28d0, type: 3}
 --- !u!1 &398622822 stripped
 GameObject:
@@ -999,6 +1005,42 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &398622825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398622822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 340b78ccaee75994b8c1ca9854f6cabd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteracting: 0
+  objectType: 3
+  dialogue: {fileID: 11400000, guid: d84fd6fef979f2e429e9f0f0cb06680a, type: 2}
+--- !u!65 &398622826
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398622822}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.754661, y: 5.4328365, z: 3.1471088}
+  m_Center: {x: 0.19633864, y: 2.216422, z: 1.0735494}
 --- !u!1001 &403017720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4680,7 +4722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31caf34c34ff2a444a11c3351a8c4198, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.86
+      value: 16.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31caf34c34ff2a444a11c3351a8c4198, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4688,7 +4730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31caf34c34ff2a444a11c3351a8c4198, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.39
+      value: -7.73
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31caf34c34ff2a444a11c3351a8c4198, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4791,7 +4833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInteracting: 0
   objectType: 3
-  dialogue: {fileID: 11400000, guid: 5f4d846b06978434daa06ab263b9340d, type: 2}
+  dialogue: {fileID: 11400000, guid: 13e8d2b8e5738c340bd4902be659fb90, type: 2}
 --- !u!65 &2010123447
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5158,8 +5200,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 40

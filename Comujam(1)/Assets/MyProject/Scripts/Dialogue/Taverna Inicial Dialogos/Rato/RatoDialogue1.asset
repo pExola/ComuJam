@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   answers:
   - {fileID: 11400000, guid: 914b1eab6f2aaee4d83d5e933433f906, type: 2}
+  - {fileID: 11400000, guid: a80229d329267a64fb525591f3b79d71, type: 2}
   dialogueText: "Rato: Ora, ora, olha quem finalmente voltou a vida! Dormiu bem,
     mago? Ou sua cabe\xE7a ainda ecoa como um tambor de guerra?"
   playerAnswer: "Quem... ou o que \xE9 voc\xEA?"

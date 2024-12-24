@@ -15,6 +15,7 @@ MonoBehaviour:
   answers:
   - {fileID: 11400000, guid: 9dc2f8337c93a9f4eb45db4cbeb6df5c, type: 2}
   - {fileID: 11400000, guid: 44c64f23817853d4e86441148771f7ca, type: 2}
+  - {fileID: 11400000, guid: a80229d329267a64fb525591f3b79d71, type: 2}
   dialogueText: "Meridium: Thandrel! Voc\xEA finalmente acordou... Achei que ainda
     estivesse perdido entre as n\xE9voas do hidromel. Fico feliz em ver que est\xE1
     em p\xE9, ao menos."
