@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
-  m_Name: Aranha1
+  m_Name: CharadaCerta
   m_EditorClassIdentifier: 
   answers:
-  - {fileID: 11400000, guid: 74e6e9147398f6a4b9afc6f199e0b936, type: 2}
-  - {fileID: 11400000, guid: a80229d329267a64fb525591f3b79d71, type: 2}
-  dialogueText: "Characn\xEDdea: Ora, ora, retornaram pelo seu amigo? Ser\xE1 que
-    tamb\xE9m querem fazer parte do meu jantar, ou vieram apenas para assistir?"
-  playerAnswer: 
+  - {fileID: 11400000, guid: 9f00a4196bf96e74795785fc95dfb6c9, type: 2}
+  dialogueText: "Characn\xEDdea: Um mapa. Muito bem, Thandrel, parece que nem todo
+    o hidromel conseguiu embotar sua mente. Parece que ficarei sem meu jantar afinal..."
+  playerAnswer: "Voc\xEA \xE9 um mapa!"
   portrait: {fileID: 21300000, guid: 4ff12bae87d45c642a90c3580403b15b, type: 3}
   isEnd: 0
   conditionalItem: {fileID: 0}
