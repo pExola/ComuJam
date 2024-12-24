@@ -713,7 +713,7 @@ MonoBehaviour:
   iniciarEvento:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1484156409}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: 
         m_Mode: 1
@@ -1249,10 +1249,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 371141545}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f839db7a0eb8ca848be05a0325bea2ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 0432baf52e52e6c4aa566334192bad09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  audioSourceMusicaDeFundo: {fileID: 0}
 --- !u!1 &375616780 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7112271191603648201, guid: 4d0f1130ba6b2f94783c55901e234ac6, type: 3}
@@ -2964,8 +2964,7 @@ Transform:
   m_LocalPosition: {x: -12.82, y: 21.66, z: -16.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1484156408}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 35.87, y: -43.8, z: 0}
 --- !u!1 &981916701 stripped
@@ -4417,163 +4416,6 @@ Transform:
   - {fileID: 1778505315}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1484156407
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1484156408}
-  - component: {fileID: 1484156409}
-  - component: {fileID: 1484156410}
-  m_Layer: 0
-  m_Name: SoundController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1484156408
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484156407}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.28571588, y: 0.35486308, z: -0.11485706, w: 0.88274944}
-  m_LocalPosition: {x: 0.52, y: 9.37, z: 23.79}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 963194228}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1484156409
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484156407}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 0.807
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 176
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &1484156410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484156407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f839db7a0eb8ca848be05a0325bea2ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: RadinhoTocando
-    clip: {fileID: 8300000, guid: c54d146362df69d4b9362386e3636c86, type: 3}
-    volume: 0.09
-    pitch: 1
-    source: {fileID: 0}
-  - name: PrateleiraCongelando
-    clip: {fileID: 8300000, guid: 443709d9c17d9474fa2bf9bd2642222e, type: 3}
-    volume: 0.683
-    pitch: 0.98
-    source: {fileID: 0}
-  - name: MusicaSucesso
-    clip: {fileID: 8300000, guid: 8f32e6da2f9d3ae4dafb84b5b83e340a, type: 3}
-    volume: 0.683
-    pitch: 0.79
-    source: {fileID: 0}
 --- !u!1 &1513669182
 GameObject:
   m_ObjectHideFlags: 0
@@ -4716,6 +4558,69 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1584038202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1584038204}
+  - component: {fileID: 1584038203}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1584038203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584038202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38f366430ce7cd48945da5e91cf7347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: RadinhoTocando
+    clip: {fileID: 8300000, guid: c54d146362df69d4b9362386e3636c86, type: 3}
+    volume: 0.267
+    pitch: 1.52
+    loop: 0
+    source: {fileID: 0}
+  - name: PrateleiraCongelando
+    clip: {fileID: 8300000, guid: 443709d9c17d9474fa2bf9bd2642222e, type: 3}
+    volume: 1
+    pitch: 0.92
+    loop: 0
+    source: {fileID: 0}
+  - name: MusicaSucesso
+    clip: {fileID: 8300000, guid: 8f32e6da2f9d3ae4dafb84b5b83e340a, type: 3}
+    volume: 0.584
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &1584038204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584038202}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1584210389 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8825515026864334856, guid: d850be6fdf90d764082bf7cfccbb03d0, type: 3}
@@ -6024,7 +5929,7 @@ RectTransform:
   m_GameObject: {fileID: 2009555663}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 2, z: 1.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 782211753}
@@ -6711,6 +6616,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1584038204}
   - {fileID: 1471753499}
   - {fileID: 963194228}
   - {fileID: 705507995}

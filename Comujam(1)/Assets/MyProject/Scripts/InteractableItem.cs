@@ -29,7 +29,7 @@ public class InteractableItem : Interactable
                     animator.SetBool("isPlaying", isPlaying);
                     StartCoroutine(InvokeEventAfterDelay(3f));
                     interacted = true;
-                    FindObjectOfType<Sound_Effects_Player>().Play("PrateleiraCongelando");  
+                    FindObjectOfType<AudioManager>().Play("PrateleiraCongelando");
 
                 }
                 //if (doorToEnable)
@@ -47,9 +47,9 @@ public class InteractableItem : Interactable
 
                     if (isPlaying)
                     {
-
+                        FindObjectOfType<AudioManager>().Play("RadinhoTocando");
                         StartCoroutine(DesativarSomAposTempo(5f));
-                        FindObjectOfType<Sound_Effects_Player>().Play("RadinhoTocando");
+
                     }
 
                 }

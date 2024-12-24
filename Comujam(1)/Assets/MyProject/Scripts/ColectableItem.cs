@@ -13,6 +13,7 @@ public class ColectableItem : Interactable
         {
             Inventory.SetItem(item);
             this.pego = true;
+            FindObjectOfType<AudioManager>().Play("MusicaSucesso");
         }
         if (destruir)
         {

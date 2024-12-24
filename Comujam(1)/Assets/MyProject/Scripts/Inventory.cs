@@ -64,6 +64,7 @@ public class Inventory : MonoBehaviour
         item.usarItem();
         instance.items.Remove(item);
         UIManager.AtualizarInventario();
+
     }
 
     public static void RemoveItem(Item item)
