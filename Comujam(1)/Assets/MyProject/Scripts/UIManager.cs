@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using TMPro;
 using Unity.VisualScripting;
 
@@ -230,6 +231,8 @@ public class UIManager : MonoBehaviour
 
         instance.interactionText.text = dialogue.dialogueText;
 
+        // Colocar o texto gradualmente (nome da função ja fala, mas é bom saber lendo no pt-br né)
+        
         instance.StartCoroutine(ShowDialogueTextGradually(dialogue.dialogueText));
 
         // Recompensa do diálogo
@@ -256,6 +259,15 @@ public class UIManager : MonoBehaviour
 
         instance.interactionPanel.SetActive(true);
 
+        // Verificar se o dialogo é do tipo evento para, assim rodar o evento!!!!!
+
+        if( dialogue is DialogueEvent dialogoComEvento)
+        {
+            Debug.Log("Começando o evento do dialogo que contem evento");
+            //instance.StartCoroutine(instance.InvokeEventAfterDelay(dialogoComEvento.delayStartEvento, dialogoComEvento.EventToRunAfterPlay));
+            dialogoComEvento.EventToRunAfterPlay.Invoke();
+        }
+
         if (dialogue.conditionalItem != null)
         {
             Debug.Log($"Item condicional necessário: {dialogue.conditionalItem.itemName}");
@@ -266,14 +278,19 @@ public class UIManager : MonoBehaviour
         }
 
     }
-
+    private IEnumerator InvokeEventAfterDelay(float delay, UnityEvent evento)
+    {
+        yield return new WaitForSeconds(delay);
+        evento.Invoke();
+    }
     private static IEnumerator ShowDialogueTextGradually(string text)
     {
+
         instance.interactionText.text = "";  // Limpar o texto atual
         for (int i = 0; i < text.Length; i++)
         {
             instance.interactionText.text += text[i]; // Adiciona uma letra por vez
-            yield return new WaitForSeconds(0.05f); // Tempo para atraso entre cada letra
+            yield return new WaitForSeconds(0.005f); // Tempo para atraso entre cada letra
         }
         // Após o texto do diálogo ser totalmente exibido, começar a exibir as respostas
         yield return new WaitForSeconds(0.5f); // Aguardar um tempo extra, se necessário, após o diálogo completo
