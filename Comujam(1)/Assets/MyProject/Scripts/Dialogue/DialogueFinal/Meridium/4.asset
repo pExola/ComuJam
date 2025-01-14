@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
+  m_Name: 4
+  m_EditorClassIdentifier: 
+  answers:
+  - {fileID: 11400000, guid: 2d6a8db7919797f42a8574630fed18d3, type: 2}
+  dialogueText: "Meridium: N\xE3o rapaz, ficarei para a pr\xF3xima festa que inicia
+    daqui meio dia, mande abra\xE7os para a felizmaga!"
+  playerAnswer: "Mil perd\xF5es meu amigo...Ainda estou meio tonto, mas afinal, voc\xEA
+    vem comigo ou n\xE3o?!"
+  portrait: {fileID: 21300000, guid: dac8a9203c0971c42aff975701ee6dc5, type: 3}
+  isEnd: 0
+  conditionalItem: {fileID: 0}
+  recompensaDialogo: {fileID: 0}
+  removeConditionalItem: 0
