@@ -32,10 +32,10 @@ public class InteractableItem : Interactable
                     FindObjectOfType<AudioManager>().Play("PrateleiraCongelando");
 
                 }
-                //if (doorToEnable)
-                //{
-                //    doorToEnable.enabled = true;
-                //}
+                if (doorToEnable)
+                {
+                    doorToEnable.enabledTeleport = true;
+                }
             }
             else
             {

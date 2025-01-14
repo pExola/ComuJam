@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScriptChaveGelo : MonoBehaviour
 {
@@ -9,10 +11,20 @@ public class ScriptChaveGelo : MonoBehaviour
     public Teleport tpCena;
 
 
+
     public void entregarAChaveProCabunco()
     {
         Inventory.SetItem(chave);
         objCubo.SetActive(false);
         tpCena.enabledTeleport = true;
+    }
+
+    public async void quebrarCadeado() 
+    {
+        Debug.Log("funcionando");
+        objCubo.SetActive(false);
+        await Task.Delay(1000);
+        SceneManager.LoadScene("GAMEOVER");
+        
     }
 }

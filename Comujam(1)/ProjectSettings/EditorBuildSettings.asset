@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MyProject/Scenes/Taverna final.unity
     guid: f7aaf07c6b906c94ebbb34156e1934e9
+  - enabled: 1
+    path: Assets/MyProject/Scenes/GAMEOVER.unity
+    guid: 4bfa415352b724740b4217ac8a8fe977
   m_configObjects: {}
