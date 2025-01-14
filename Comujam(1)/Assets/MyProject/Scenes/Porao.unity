@@ -4077,6 +4077,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1593844964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1593844966}
+  - component: {fileID: 1593844965}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1593844965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593844964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38f366430ce7cd48945da5e91cf7347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: RadinhoTocando
+    clip: {fileID: 8300000, guid: c54d146362df69d4b9362386e3636c86, type: 3}
+    volume: 0.267
+    pitch: 1.52
+    loop: 0
+    source: {fileID: 0}
+  - name: PrateleiraCongelando
+    clip: {fileID: 8300000, guid: 443709d9c17d9474fa2bf9bd2642222e, type: 3}
+    volume: 1
+    pitch: 0.92
+    loop: 0
+    source: {fileID: 0}
+  - name: MusicaSucesso
+    clip: {fileID: 8300000, guid: 8f32e6da2f9d3ae4dafb84b5b83e340a, type: 3}
+    volume: 0.584
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: RatoMorrendo
+    clip: {fileID: 8300000, guid: a495a557c4c8f2e42a8168ed2101809c, type: 3}
+    volume: 0.806
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &1593844966
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593844964}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1598217836
 GameObject:
   m_ObjectHideFlags: 0
@@ -5976,4 +6045,8 @@ SceneRoots:
   - {fileID: 791669513}
   - {fileID: 2071447885}
   - {fileID: 398622821}
+<<<<<<< Updated upstream
   - {fileID: 1711841998}
+=======
+  - {fileID: 1593844966}
+>>>>>>> Stashed changes
