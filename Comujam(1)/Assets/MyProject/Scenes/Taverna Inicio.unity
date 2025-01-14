@@ -1141,7 +1141,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 95f2b98ac279cfc4094399aa633968a9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.413
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1153,7 +1153,7 @@ AudioSource:
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 0
+  BypassEffects: 1
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
@@ -2199,7 +2199,7 @@ MonoBehaviour:
   animator: {fileID: 841730718}
   conditionalItem: {fileID: 11400000, guid: a185106305323ba46ba45a128602e885, type: 2}
   acionarRato: 0
-  doorToEnable: {fileID: 1202482255}
+  doorToEnable: {fileID: 0}
   uniqueInteract: 0
   interacted: 0
   iniciarEvento:
@@ -3219,9 +3219,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6a6df90d71b08634aa603a7e4be74da5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1584457805}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6a6df90d71b08634aa603a7e4be74da5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1584457804}
   m_SourcePrefab: {fileID: 100100000, guid: 6a6df90d71b08634aa603a7e4be74da5, type: 3}
 --- !u!1 &1191480675 stripped
 GameObject:
@@ -3399,7 +3396,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   cena: Porao
   escotilha: {fileID: 0}
-  enabled: 0
+  enabledTeleport: 1
 --- !u!65 &1202482256
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4083,6 +4080,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292848682}
   m_CullTransparentMesh: 1
+--- !u!1 &1300940331 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 35bc4be1d59dfc54a8db504375d2ebd0, type: 3}
+  m_PrefabInstance: {fileID: 1593760906}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1300940335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300940331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96cafbc4a35f2048a90b7442d258f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteracting: 0
+  objectType: 4
+  item: {fileID: 11400000, guid: 96ba9910a7c88de4d9caf68514007aee, type: 2}
+  destruir: 1
+  pego: 0
+--- !u!65 &1300940336
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300940331}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.03413296, y: 0.07143743, z: 0.12655742}
+  m_Center: {x: -0.011967514, y: 0.023997178, z: 0.037096176}
 --- !u!1001 &1401409316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4165,11 +4205,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7749197174469120575, guid: c65601bb23a0be44e90d2afcbe454825, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00024919
+      value: -0.0003
       objectReference: {fileID: 0}
     - target: {fileID: 7749197174469120575, guid: c65601bb23a0be44e90d2afcbe454825, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0040039
+      value: 0.00898
       objectReference: {fileID: 0}
     - target: {fileID: 7749197174469120575, guid: c65601bb23a0be44e90d2afcbe454825, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4590,7 +4630,7 @@ MonoBehaviour:
   sounds:
   - name: RadinhoTocando
     clip: {fileID: 8300000, guid: c54d146362df69d4b9362386e3636c86, type: 3}
-    volume: 0.267
+    volume: 0.158
     pitch: 1.52
     loop: 0
     source: {fileID: 0}
@@ -4602,9 +4642,21 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: MusicaSucesso
     clip: {fileID: 8300000, guid: 8f32e6da2f9d3ae4dafb84b5b83e340a, type: 3}
-    volume: 0.584
+    volume: 0.248
     pitch: 1
     loop: 0
+    source: {fileID: 0}
+  - name: WalkAudio
+    clip: {fileID: 8300000, guid: 808f3721107429245b42a1f6f9410cde, type: 3}
+    volume: 0.277
+    pitch: 0.95
+    loop: 1
+    source: {fileID: 0}
+  - name: Nada
+    clip: {fileID: 0}
+    volume: 1
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
 --- !u!4 &1584038204
 Transform:
@@ -4642,23 +4694,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6a6df90d71b08634aa603a7e4be74da5, type: 3}
   m_PrefabInstance: {fileID: 1154927006}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1584457804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1584457800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a96cafbc4a35f2048a90b7442d258f0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInteracting: 0
-  objectType: 4
-  item: {fileID: 11400000, guid: 96ba9910a7c88de4d9caf68514007aee, type: 2}
-  destruir: 0
-  pego: 0
 --- !u!65 &1584457805
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4702,43 +4737,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35bc4be1d59dfc54a8db504375d2ebd0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.657469
+      value: -24.865
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35bc4be1d59dfc54a8db504375d2ebd0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.4423
+      value: 5.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35bc4be1d59dfc54a8db504375d2ebd0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.5363965
+      value: 3.348
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35bc4be1d59dfc54a8db504375d2ebd0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6322018
+      value: 0.489502
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35bc4be1d59dfc54a8db504375d2ebd0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.24147883
+      value: -0.4895017
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35bc4be1d59dfc54a8db504375d2ebd0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.719992
+      value: 0.51028234
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35bc4be1d59dfc54a8db504375d2ebd0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.15368968
+      value: -0.5102821
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35bc4be1d59dfc54a8db504375d2ebd0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -175.181
+      value: -182.381
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35bc4be1d59dfc54a8db504375d2ebd0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -81.14398
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35bc4be1d59dfc54a8db504375d2ebd0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 147.045
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 35bc4be1d59dfc54a8db504375d2ebd0, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4751,7 +4786,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 35bc4be1d59dfc54a8db504375d2ebd0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1300940335}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 35bc4be1d59dfc54a8db504375d2ebd0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1300940336}
   m_SourcePrefab: {fileID: 100100000, guid: 35bc4be1d59dfc54a8db504375d2ebd0, type: 3}
 --- !u!1 &1598217836
 GameObject:
@@ -5190,7 +5231,8 @@ MonoBehaviour:
   - {fileID: 1245571646}
   - {fileID: 1970443095}
   - {fileID: 1450085762}
-  textSpeed: 0.05
+  textSpeed: 0
+  EventsToRun: []
 --- !u!4 &1792938132
 Transform:
   m_ObjectHideFlags: 0
@@ -5705,7 +5747,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   cena: 
   escotilha: {fileID: 0}
-  enabled: 1
+  enabledTeleport: 1
 --- !u!1 &1968563608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -628237400022674424, guid: 4d0f1130ba6b2f94783c55901e234ac6, type: 3}
@@ -6106,9 +6148,9 @@ MonoBehaviour:
   - {x: -15.2, y: 5.71, z: -2.31}
   toca: {x: 0, y: 0, z: 0}
   posEstante: {fileID: 841730717}
-  posEscotilha: {fileID: 676437521}
+  posEscotilha: {fileID: 0}
   posEsconderijoBarril: {fileID: 0}
-  porta: {fileID: 1202482255}
+  porta: {fileID: 0}
   queijo: {fileID: 1228332677}
   queijoNaBoca: {fileID: 685338538}
   estadoNormal: 1

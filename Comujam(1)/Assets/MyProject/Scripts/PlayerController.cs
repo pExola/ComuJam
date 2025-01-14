@@ -58,8 +58,11 @@ public class PlayerController : MonoBehaviour
             animacao.SetBool("isWalking", true); // Define animação de andando
         }
 
-        if (UIManager.InDialogue()) // Pausa movimentação durante o diálogo
+        if (UIManager.InDialogue())// Pausa movimentação durante o diálogo
+        {
+            FindObjectOfType<AudioManager>().Stop("WalkAudio"); // Para o audio do Walk Cycle
             return;
+        }
 
         andarClickando();
         usarItem();
@@ -75,12 +78,15 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
+
             if (((1 << hit.collider.gameObject.layer) & groundLayer) != 0)
             {
                 cursorOnGround = true;
 
                 if (Input.GetMouseButtonDown(0))
                 {
+                    FindObjectOfType<AudioManager>().Play("WalkAudio"); // Toca o audio do Walk Cycle
+                    Debug.Log("está andando");
                     agent.SetDestination(hit.point);
                     SpawnArrow(hit.point); // Instancia a seta no destino
                     playerInteractions.CancelInteraction(); // Cancela interação atual
@@ -99,6 +105,7 @@ public class PlayerController : MonoBehaviour
         if (agent.velocity.magnitude == 0)
         {
             animacao.SetBool("isWalking", false);
+            FindObjectOfType<AudioManager>().Stop("WalkAudio");
         }
         else
         {

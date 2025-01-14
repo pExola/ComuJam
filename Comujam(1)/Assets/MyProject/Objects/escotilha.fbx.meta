@@ -3,12 +3,7 @@ guid: c65601bb23a0be44e90d2afcbe454825
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: escotilha
-    second: {fileID: 2100000, guid: 3cfac3354a6db0144be4d814eb1ac153, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

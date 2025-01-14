@@ -22,6 +22,8 @@ public class ScriptSpider : MonoBehaviour
         }
     }
 
+    public bool CheckAudio = true; // Essa variável serve pra não chamar o áudio do rato morrendo todo frame
+
     public void Update()
     {
         distance = Vector3.Distance(PositionToWalkFirst.position, transform.position);
@@ -36,8 +38,12 @@ public class ScriptSpider : MonoBehaviour
                 StartCoroutine(ExecuteAfterDelay(3f));
                 SpiderAnimatorController.SetBool("isEating", true); // Define animação de comer
                 Debug.Log("Ativando o som");
-
+                
+                // Se a CheckAudio = true ele toca o audio e deixa ela false. Assim, ela só toca uma vez no update.
+                if (CheckAudio == true){ 
                 FindObjectOfType<AudioManager>().Play("RatoMorrendo");
+                CheckAudio = false;
+                }
 
             }
             else
@@ -62,6 +68,8 @@ public class ScriptSpider : MonoBehaviour
             Debug.Log("Andando para o ponto desejado");
 
             SpiderNavAgent.SetDestination(PositionToWalkFirst.position);
+            
+
             
         }
         else
