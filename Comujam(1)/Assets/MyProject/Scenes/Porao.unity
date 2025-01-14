@@ -1795,7 +1795,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   cena: Taverna final
   escotilha: {fileID: 0}
-  enabledTeleport: 1
+  enabledTeleport: 0
 --- !u!1001 &457700701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2624,7 +2624,7 @@ PrefabInstance:
       addedObject: {fileID: 825164530}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e506e37b0190944bb2d1d3a99cadf52, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 825164531}
+      addedObject: {fileID: 825164533}
   m_SourcePrefab: {fileID: 100100000, guid: 8e506e37b0190944bb2d1d3a99cadf52, type: 3}
 --- !u!1 &825164525 stripped
 GameObject:
@@ -2654,7 +2654,19 @@ MonoBehaviour:
   interacted: 0
   iniciarEvento:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 825164533}
+        m_TargetAssemblyTypeName: ScriptChaveGelo, Assembly-CSharp
+        m_MethodName: entregarAChaveProCabunco
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!208 &825164527
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2755,7 +2767,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &825164531
+--- !u!114 &825164533
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2764,14 +2776,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 825164525}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a96cafbc4a35f2048a90b7442d258f0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 97a62905f74916c4296367ab6dd3ba6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInteracting: 0
-  objectType: 4
-  item: {fileID: 11400000, guid: b53359de10c92ea4485f79dab1945170, type: 2}
-  destruir: 1
-  pego: 0
+  chave: {fileID: 11400000, guid: b53359de10c92ea4485f79dab1945170, type: 2}
+  tpCena: {fileID: 451456861}
 --- !u!1 &892016121
 GameObject:
   m_ObjectHideFlags: 0
