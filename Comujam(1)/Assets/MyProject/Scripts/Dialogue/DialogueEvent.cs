@@ -6,6 +6,6 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "NewDialogueEvent", menuName = "DialogueEvent")]
 public class DialogueEvent : Dialogue
 {
-    public UnityEvent EventToRunAfterPlay;
+    public int IndiceEventoParaExecutar;
     public float delayStartEvento;
 }

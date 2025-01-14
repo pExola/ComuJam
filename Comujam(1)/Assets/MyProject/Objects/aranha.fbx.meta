@@ -128,8 +128,8 @@ ModelImporter:
       name: Armature|ARANHA_WALK24
       takeName: Armature|ARANHA_WALK24
       internalID: -3733712675284807106
-      firstFrame: 0
-      lastFrame: 50
+      firstFrame: 10
+      lastFrame: 36
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -15,12 +15,12 @@ public class Teleport : Interactable
     public NavMeshAgent agent;
     public string cena;
     public GameObject escotilha;
-    public bool enabled = true;
+    public bool enabledTeleport = true;
     public async override void Interact()
     {
         if (isInteracting)
             return;
-        if (enabled)
+        if (enabledTeleport)
         {
             isInteracting = true;
             Debug.Log($"{text} teleportanto!");

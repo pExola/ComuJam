@@ -39,6 +39,8 @@ public class UIManager : MonoBehaviour
 
     TextInteraction textInteraction;
 
+    public List<UnityEvent> EventsToRun;
+
     // Verificar estado de diálogo
     public static bool InDialogue()
     {
@@ -264,8 +266,8 @@ public class UIManager : MonoBehaviour
         if( dialogue is DialogueEvent dialogoComEvento)
         {
             Debug.Log("Começando o evento do dialogo que contem evento");
-            //instance.StartCoroutine(instance.InvokeEventAfterDelay(dialogoComEvento.delayStartEvento, dialogoComEvento.EventToRunAfterPlay));
-            dialogoComEvento.EventToRunAfterPlay.Invoke();
+            instance.StartCoroutine(instance.InvokeEventAfterDelay(dialogoComEvento.delayStartEvento, instance.EventsToRun[dialogoComEvento.IndiceEventoParaExecutar]));
+            //instance.EventsToRun[dialogoComEvento.IndiceEventoParaExecutar].Invoke();
         }
 
         if (dialogue.conditionalItem != null)
