@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
-  m_Name: 1
+  m_Name: 2
   m_EditorClassIdentifier: 
   answers:
-  - {fileID: 11400000, guid: fbac9655b2684ee429f5c5909e8c046e, type: 2}
-  - {fileID: 11400000, guid: a80229d329267a64fb525591f3b79d71, type: 2}
-  dialogueText: "Ignavus: Pelo amor de Modron, pensei que seria devorado! Se n\xE3o
-    fosse por voc\xEA eu j\xE1 estaria no trato digestivo daquela aranha!"
+  - {fileID: 11400000, guid: 917a0a64c658f7d4a8572bd69a52ba63, type: 2}
+  dialogueText: "Ignavus: Claro Thandrell! Est\xE1 aqui na minha t\xFAnica, sinta-se
+    a vontade."
   playerAnswer: "Ignavus meu caro, que al\xEDvio te ver bem, mas preciso de sua ajuda.
     Ainda tem a magia do fogo?"
   portrait: {fileID: 21300000, guid: dac8a9203c0971c42aff975701ee6dc5, type: 3}

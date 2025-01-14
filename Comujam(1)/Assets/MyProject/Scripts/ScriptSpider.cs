@@ -83,7 +83,7 @@ public class ScriptSpider : MonoBehaviour
     }
     public IEnumerator Execute()
     {
-        FindObjectOfType<AudioManager>().Play("RatoMorrendo");
+        //FindObjectOfType<AudioManager>().Play("RatoMorrendo");
         yield return new WaitForSeconds(0.3f);
     }
 }
