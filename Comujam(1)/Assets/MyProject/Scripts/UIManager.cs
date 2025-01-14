@@ -292,7 +292,7 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < text.Length; i++)
         {
             instance.interactionText.text += text[i]; // Adiciona uma letra por vez
-            yield return new WaitForSeconds(0.005f); // Tempo para atraso entre cada letra
+            yield return new WaitForSeconds(instance.textSpeed); // Tempo para atraso entre cada letra
         }
         // Após o texto do diálogo ser totalmente exibido, começar a exibir as respostas
         yield return new WaitForSeconds(0.5f); // Aguardar um tempo extra, se necessário, após o diálogo completo

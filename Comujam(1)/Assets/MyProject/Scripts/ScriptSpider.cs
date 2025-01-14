@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -7,7 +10,9 @@ public class ScriptSpider : MonoBehaviour
     public Transform PositionToWalkFirst; // Defina o destino no Inspector
     public NavMeshAgent SpiderNavAgent; // Certifique-se de que o agente está configurado
     public Animator SpiderAnimatorController;
-    private bool indoRato = false;
+    public GameObject ratoArrombadoQueVaiMorrerNessaPorra;
+    private bool indoRato = false,ratoMorto = false;
+    float distance;
     private void Start()
     {
         if (SpiderNavAgent == null)
@@ -19,11 +24,24 @@ public class ScriptSpider : MonoBehaviour
 
     public void Update()
     {
-        float distance = Vector3.Distance(PositionToWalkFirst.position, transform.position);
-        if (SpiderNavAgent.velocity.magnitude == 0)
+        distance = Vector3.Distance(PositionToWalkFirst.position, transform.position);
+        Debug.Log($"Distancia = {distance.ToString()} Magnetude= {SpiderNavAgent.velocity.magnitude.ToString()}");
+        if (SpiderNavAgent.velocity.magnitude < 0.4)
         {
+            if (distance <= 3 && !ratoMorto)
+            {
+                SpiderNavAgent.ResetPath();
+                Debug.Log("Ativando o comer");
+                SpiderAnimatorController.SetBool("isEating", true); // Define animação de comer
+                StartCoroutine(ExecuteAfterDelay(3f));
+
+            }
+            else
+            {
+                SpiderAnimatorController.SetBool("isEating", false); // Define animação de comer
+            }
             SpiderAnimatorController.SetBool("isWalking", false); // Define animação de parado
-            
+
         }
         else
         {
@@ -46,5 +64,13 @@ public class ScriptSpider : MonoBehaviour
         {
             Debug.LogWarning("Faltando referências: verifique o PositionToWalkFirst ou o SpiderNavAgent.");
         }
+    }
+    public IEnumerator ExecuteAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Ação que será executada após o delay
+        ratoMorto = true;
+        this.ratoArrombadoQueVaiMorrerNessaPorra.SetActive(false);
     }
 }

@@ -1182,6 +1182,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c2836f91179291f40a4e5c0fba2f28d0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 398622826}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c2836f91179291f40a4e5c0fba2f28d0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 398622829}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c2836f91179291f40a4e5c0fba2f28d0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 398622828}
   m_SourcePrefab: {fileID: 100100000, guid: c2836f91179291f40a4e5c0fba2f28d0, type: 3}
 --- !u!1 &398622822 stripped
 GameObject:
@@ -1243,8 +1249,46 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7.664225, y: 7.350651, z: 5.746}
-  m_Center: {x: 1.651141, y: 3.1753337, z: 0.031403705}
+  m_Size: {x: 4.3106985, y: 5.3477573, z: 6.0773463}
+  m_Center: {x: -0.025617287, y: 2.1738899, z: -1.6049587}
+--- !u!114 &398622828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398622822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1668dd7b356e2bc4dbc68081e63baf7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PositionToWalkFirst: {fileID: 2010123444}
+  SpiderNavAgent: {fileID: 398622829}
+  SpiderAnimatorController: {fileID: 398622823}
+  ratoArrombadoQueVaiMorrerNessaPorra: {fileID: 2010123443}
+--- !u!195 &398622829
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398622822}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &403017720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1738,7 +1782,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   cena: Taverna final
   escotilha: {fileID: 0}
-  enabled: 0
+  enabledTeleport: 1
 --- !u!1001 &457700701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4401,7 +4445,22 @@ MonoBehaviour:
   - {fileID: 1245571646}
   - {fileID: 1970443095}
   - {fileID: 1450085762}
-  textSpeed: 0.05
+  textSpeed: 0
+  EventsToRun:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 398622828}
+        m_TargetAssemblyTypeName: ScriptSpider, Assembly-CSharp
+        m_MethodName: SpiderWalkToPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1792938132
 Transform:
   m_ObjectHideFlags: 0
@@ -5597,71 +5656,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d850be6fdf90d764082bf7cfccbb03d0, type: 3}
---- !u!1001 &3676422171677537239
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2072712236360955466, guid: e2d83dc49f7444b4189055d4af44509e, type: 3}
-      propertyPath: PositionToWalkFirst
-      value: 
-      objectReference: {fileID: 2010123444}
-    - target: {fileID: 3562318286510749921, guid: e2d83dc49f7444b4189055d4af44509e, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4884341076222759096, guid: e2d83dc49f7444b4189055d4af44509e, type: 3}
-      propertyPath: m_Name
-      value: aranha
-      objectReference: {fileID: 0}
-    - target: {fileID: 5225155198261594626, guid: e2d83dc49f7444b4189055d4af44509e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 5225155198261594626, guid: e2d83dc49f7444b4189055d4af44509e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 5225155198261594626, guid: e2d83dc49f7444b4189055d4af44509e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -8.58
-      objectReference: {fileID: 0}
-    - target: {fileID: 5225155198261594626, guid: e2d83dc49f7444b4189055d4af44509e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.384548
-      objectReference: {fileID: 0}
-    - target: {fileID: 5225155198261594626, guid: e2d83dc49f7444b4189055d4af44509e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.07709949
-      objectReference: {fileID: 0}
-    - target: {fileID: 5225155198261594626, guid: e2d83dc49f7444b4189055d4af44509e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.88502485
-      objectReference: {fileID: 0}
-    - target: {fileID: 5225155198261594626, guid: e2d83dc49f7444b4189055d4af44509e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.25081795
-      objectReference: {fileID: 0}
-    - target: {fileID: 5225155198261594626, guid: e2d83dc49f7444b4189055d4af44509e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 30.216
-      objectReference: {fileID: 0}
-    - target: {fileID: 5225155198261594626, guid: e2d83dc49f7444b4189055d4af44509e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 132.018
-      objectReference: {fileID: 0}
-    - target: {fileID: 5225155198261594626, guid: e2d83dc49f7444b4189055d4af44509e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -3.744
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e2d83dc49f7444b4189055d4af44509e, type: 3}
 --- !u!1001 &9204582180714360383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5780,8 +5774,8 @@ SceneRoots:
   - {fileID: 457700701}
   - {fileID: 825164524}
   - {fileID: 1695349862}
-  - {fileID: 3676422171677537239}
   - {fileID: 1700958300}
   - {fileID: 627470361}
   - {fileID: 791669513}
   - {fileID: 2071447885}
+  - {fileID: 398622821}

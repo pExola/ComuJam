@@ -70,8 +70,8 @@ ModelImporter:
       name: Armature|ARANHA_COMENDO
       takeName: Armature|ARANHA_COMENDO
       internalID: 7341986956655373461
-      firstFrame: 0
-      lastFrame: 33
+      firstFrame: 0.3
+      lastFrame: 20.2
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
