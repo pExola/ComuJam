@@ -25,15 +25,19 @@ public class ScriptSpider : MonoBehaviour
     public void Update()
     {
         distance = Vector3.Distance(PositionToWalkFirst.position, transform.position);
-        Debug.Log($"Distancia = {distance.ToString()} Magnetude= {SpiderNavAgent.velocity.magnitude.ToString()}");
+        //Debug.Log($"Distancia = {distance.ToString()} Magnetude= {SpiderNavAgent.velocity.magnitude.ToString()}");
         if (SpiderNavAgent.velocity.magnitude < 0.4)
         {
             if (distance <= 3 && !ratoMorto)
             {
                 SpiderNavAgent.ResetPath();
                 Debug.Log("Ativando o comer");
-                SpiderAnimatorController.SetBool("isEating", true); // Define animação de comer
+                //StartCoroutine(Execute());
                 StartCoroutine(ExecuteAfterDelay(3f));
+                SpiderAnimatorController.SetBool("isEating", true); // Define animação de comer
+                Debug.Log("Ativando o som");
+
+                FindObjectOfType<AudioManager>().Play("RatoMorrendo");
 
             }
             else
@@ -67,10 +71,19 @@ public class ScriptSpider : MonoBehaviour
     }
     public IEnumerator ExecuteAfterDelay(float delay)
     {
+        //FindObjectOfType<AudioManager>().Play("RatoMorrendo");
+
         yield return new WaitForSeconds(delay);
 
         // Ação que será executada após o delay
+        Debug.Log("Rato morreu");
+
         ratoMorto = true;
         this.ratoArrombadoQueVaiMorrerNessaPorra.SetActive(false);
+    }
+    public IEnumerator Execute()
+    {
+        FindObjectOfType<AudioManager>().Play("RatoMorrendo");
+        yield return new WaitForSeconds(0.3f);
     }
 }
