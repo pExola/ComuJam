@@ -756,7 +756,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0388f8ef69ad4e40b1ba7b6f4eef5b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - {fileID: 11400000, guid: 7d052cd471cb4b044900836be0632433, type: 2}
 --- !u!4 &337624614
 Transform:
   m_ObjectHideFlags: 0
@@ -2780,6 +2781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chave: {fileID: 11400000, guid: b53359de10c92ea4485f79dab1945170, type: 2}
+  objCubo: {fileID: 825164525}
   tpCena: {fileID: 451456861}
 --- !u!1 &892016121
 GameObject:
