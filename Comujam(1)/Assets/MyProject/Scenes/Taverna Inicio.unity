@@ -5748,6 +5748,11 @@ MonoBehaviour:
   cena: 
   escotilha: {fileID: 0}
   enabledTeleport: 1
+--- !u!4 &1927230259 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7749197174469120575, guid: c65601bb23a0be44e90d2afcbe454825, type: 3}
+  m_PrefabInstance: {fileID: 1401409316}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1968563608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -628237400022674424, guid: 4d0f1130ba6b2f94783c55901e234ac6, type: 3}
@@ -6148,9 +6153,9 @@ MonoBehaviour:
   - {x: -15.2, y: 5.71, z: -2.31}
   toca: {x: 0, y: 0, z: 0}
   posEstante: {fileID: 841730717}
-  posEscotilha: {fileID: 0}
+  posEscotilha: {fileID: 1927230259}
   posEsconderijoBarril: {fileID: 0}
-  porta: {fileID: 0}
+  porta: {fileID: 1202482255}
   queijo: {fileID: 1228332677}
   queijoNaBoca: {fileID: 685338538}
   estadoNormal: 1
