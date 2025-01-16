@@ -15,7 +15,7 @@ public class Teleport : Interactable
     public NavMeshAgent agent;
     public string cena;
     public GameObject escotilha;
-    public bool enabledTeleport = true;
+    public bool enabledTeleport = false;
     public async override void Interact()
     {
         if (isInteracting)

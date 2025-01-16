@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
     public Image[] inventorySelectors;
 
     // Velocidade do texto gradual
-    public float textSpeed = 0.05f;
+    public float textSpeed = 1000f;
     private Coroutine typingCoroutine;
 
     // Variável de instância para armazenar o diálogo atual

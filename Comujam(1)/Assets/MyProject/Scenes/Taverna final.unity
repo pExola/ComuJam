@@ -3816,7 +3816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInteracting: 0
   objectType: 3
-  dialogue: {fileID: 11400000, guid: 093bbd03c3bfc38469ec6e3e8728f9c6, type: 2}
+  dialogue: {fileID: 11400000, guid: ade9e3d9a2047cc4fb74874c72a2a427, type: 2}
 --- !u!65 &1288649799
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4971,7 +4971,7 @@ MonoBehaviour:
   - {fileID: 1245571646}
   - {fileID: 1970443095}
   - {fileID: 1450085762}
-  textSpeed: 0
+  textSpeed: 0.02
   EventsToRun: []
 --- !u!4 &1792938132
 Transform:

@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 14ca3838f24f4c5478bf0a2eb39d06f3, type: 2}
   dialogueText: "Characn\xEDdea: \"Gelo eterno? Que presun\xE7\xE3o para um mago
     incompleto! Mas gosto de voc\xEAs, sempre t\xE3o dram\xE1ticos. Respondam minha
-    charada, e talvez... s\xF3 talvez, eu libere este infeliz.\""
+    charada, e talvez... s\xF3 talvez, eu libere este infeliz."
   playerAnswer: "Lamento interromper sua refei\xE7\xE3o, \xF3 majestosa tecel\xE3,
     mas esse mago \xE9 um dos meus. Solte-o, e prometo n\xE3o transformar sua teia
     em gelo eterno."

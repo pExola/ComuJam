@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
+  m_Name: 2
+  m_EditorClassIdentifier: 
+  answers:
+  - {fileID: 11400000, guid: 0f87716b0039a6747b95435b0a07d7b5, type: 2}
+  dialogueText: "Barrilion: Ah, O Meticuloso, voc\xEA diz isso agora. Mas a vida
+    de um mago nunca \xE9 t\xE3o simples, n\xE3o \xE9? Sempre h\xE1 mais feiti\xE7os
+    a conjurar, mais teias a escapar... e mais despedidas de solteiro a evitar."
+  playerAnswer: "Acredite, Barrilion, depois de tudo que passei aqui, nada l\xE1
+    fora pode me surpreender. Bem, pelo menos espero..."
+  portrait: {fileID: 21300000, guid: 375177b77201c134aa933036812b5cb2, type: 3}
+  isEnd: 0
+  conditionalItem: {fileID: 0}
+  recompensaDialogo: {fileID: 0}
+  removeConditionalItem: 0

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
+  m_Name: 3
+  m_EditorClassIdentifier: 
+  answers:
+  - {fileID: 11400000, guid: 0a8bce81e8a847543bf28d1b06a68fdf, type: 2}
+  dialogueText: "Barrilion: Assim que sair pela porta, trope\xE7ar\xE1 em outro problema
+    m\xE1gico que s\xF3 voc\xEA pode resolver. \xC9 a natureza de voc\xEAs, magos.
+    E se um dia precisar de um bom hidromel...sabe onde me encontrar."
+  playerAnswer: "Ao menos, espero que esta seja minha \xFAltima despedida de solteiro!"
+  portrait: {fileID: 21300000, guid: 375177b77201c134aa933036812b5cb2, type: 3}
+  isEnd: 0
+  conditionalItem: {fileID: 0}
+  recompensaDialogo: {fileID: 0}
+  removeConditionalItem: 0

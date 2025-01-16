@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
-  m_Name: Rato2
+  m_Name: 4
   m_EditorClassIdentifier: 
   answers:
   - {fileID: 11400000, guid: a80229d329267a64fb525591f3b79d71, type: 2}
-  dialogueText: 'Ratvinci: Que assim seja'
-  playerAnswer: "Olhe rato, sua raiva \xE9 compreens\xEDvel, mas tente algo comigo
-    que te fa\xE7o comida de aranha!"
-  portrait: {fileID: 21300000, guid: e7100dc1b2050b142b20050f2d411f0f, type: 3}
+  dialogueText: "Barrilion: E hist\xF3rias para contar, meu amigo. Agora v\xE1. E
+    lembre-se: o mundo \xE9 grande, mas os problemas de um mago sempre encontram
+    o caminho de casa."
+  playerAnswer: "Certo, Barrilion. Se tudo der errado l\xE1 fora, pelo menos sei
+    que sempre haver\xE1 hidromel aqui dentro."
+  portrait: {fileID: 21300000, guid: 375177b77201c134aa933036812b5cb2, type: 3}
   isEnd: 0
   conditionalItem: {fileID: 0}
   recompensaDialogo: {fileID: 0}

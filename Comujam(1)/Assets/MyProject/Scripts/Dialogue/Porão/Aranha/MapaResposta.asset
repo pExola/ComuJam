@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
   m_Name: MapaResposta
   m_EditorClassIdentifier: 
-  answers: []
-  dialogueText: 
+  answers:
+  - {fileID: 11400000, guid: 69a93abc0f06c744bb6d655d596ecc25, type: 2}
+  dialogueText: "Characn\xEDdea: Oras, isso at\xE9 que foi gentil da sua parte mago,
+    sorte para este velhote do fogo, j\xE1 para o rato...."
   playerAnswer: "Muito obrigado, \xF3 grande aracn\xEDdea, como agradecimento, posso
     lhe fornecer um banquete em troca. H\xE1 um rato bem atr\xE1s daqueles barris
     que pode lhe satisfazer."
   portrait: {fileID: 21300000, guid: 4ff12bae87d45c642a90c3580403b15b, type: 3}
-  isEnd: 1
+  isEnd: 0
   conditionalItem: {fileID: 0}
   recompensaDialogo: {fileID: 0}
   removeConditionalItem: 0

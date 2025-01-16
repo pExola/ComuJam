@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
   m_Name: RetratoResposta
   m_EditorClassIdentifier: 
-  answers: []
-  dialogueText: 
+  answers:
+  - {fileID: 11400000, guid: 69a93abc0f06c744bb6d655d596ecc25, type: 2}
+  dialogueText: "Characn\xEDdea: Uma proposta seduzente, talvez um pequeno camundongo
+    seja mais saboroso que seu amigo..."
   playerAnswer: "Espere, espere! N\xE3o precisa apressar as coisas, Vamos negociar.
     Ouvi dizer que um certo rato do sal\xE3o principal \xE9 um verdadeiro banquete
     ambulante, e se esconde perto daqueles barris."

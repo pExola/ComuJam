@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   answers:
   - {fileID: 11400000, guid: a80229d329267a64fb525591f3b79d71, type: 2}
-  dialogueText: "Characn\xEDdea: Mago, muito obrigado pela dica "
-  playerAnswer: "O rato est\xE1 atras do barris"
+  dialogueText: "Characn\xEDdea: Agora v\xE1, antes que eu mude de ideia e resolva
+    lhe fazer de estoque para o inverno"
+  playerAnswer: "Voc\xEA ainda me faz um favor, grande aracn\xEDdea, nunca fui com
+    a cara daquele dan\xE7arino"
   portrait: {fileID: 21300000, guid: 4ff12bae87d45c642a90c3580403b15b, type: 3}
   isEnd: 0
   conditionalItem: {fileID: 0}

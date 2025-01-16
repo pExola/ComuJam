@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f998c9402df974fa8d0cb41af92cf3, type: 3}
-  m_Name: Rato2
+  m_Name: 1
   m_EditorClassIdentifier: 
   answers:
+  - {fileID: 11400000, guid: 7efd4eab3fac03a478bcc2c0f2b56e12, type: 2}
   - {fileID: 11400000, guid: a80229d329267a64fb525591f3b79d71, type: 2}
-  dialogueText: 'Ratvinci: Que assim seja'
-  playerAnswer: "Olhe rato, sua raiva \xE9 compreens\xEDvel, mas tente algo comigo
-    que te fa\xE7o comida de aranha!"
-  portrait: {fileID: 21300000, guid: e7100dc1b2050b142b20050f2d411f0f, type: 3}
+  dialogueText: "Barrilion: Ent\xE3o, Thandrel, parece que finalmente recuperou o
+    suficiente para sair daqui. Quem diria que o mago mais problem\xE1tico que j\xE1
+    conheci estaria agora pronto para seu casamento? Claro, se n\xE3o se perder no
+    caminho de novo."
+  playerAnswer: 
+  portrait: {fileID: 21300000, guid: 375177b77201c134aa933036812b5cb2, type: 3}
   isEnd: 0
   conditionalItem: {fileID: 0}
   recompensaDialogo: {fileID: 0}
