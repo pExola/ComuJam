@@ -100,7 +100,7 @@ public class RatoScript : MonoBehaviour
                 agentRato.SetDestination(posEscotilha.position);
             }
         }
-        porta.enabled = true;
+        porta.enabledTeleport = true;
         rato.SetActive(false);
     }
     IEnumerator esconderBarril()
