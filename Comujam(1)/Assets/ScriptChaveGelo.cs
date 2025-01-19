@@ -19,12 +19,17 @@ public class ScriptChaveGelo : MonoBehaviour
         tpCena.enabledTeleport = true;
     }
 
-    public async void quebrarCadeado() 
+    public void quebrarCadeado() 
     {
         Debug.Log("funcionando");
-        objCubo.SetActive(false);
-        await Task.Delay(1000);
-        SceneManager.LoadScene("GAMEOVER");
         
+        StartCoroutine(LoadGameOverScene());
+
+    }
+
+    private IEnumerator LoadGameOverScene()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("GAMEOVER");
     }
 }

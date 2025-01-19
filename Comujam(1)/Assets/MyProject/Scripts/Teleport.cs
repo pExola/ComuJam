@@ -23,22 +23,14 @@ public class Teleport : Interactable
         if (enabledTeleport)
         {
             isInteracting = true;
-            Debug.Log($"{text} teleportanto!");
-            await Task.Delay(1000);
-            if (escotilha != null)
-            {
-                var animatorEscotilha = escotilha.GetComponent<Animator>();
-                if (animatorEscotilha != null)
-                {
-                    animatorEscotilha.SetBool("isOpening", true);
-
-                }
-                else
-                {
-                    animatorEscotilha.SetBool("isOpening", false);
-                }
-            }
-            SceneManager.LoadScene(cena);
+            StartCoroutine(TeleportCoroutine());
         }
+    }
+
+    private IEnumerator TeleportCoroutine()
+    {
+        Debug.Log($"{text} teleportando!");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(cena);
     }
 }

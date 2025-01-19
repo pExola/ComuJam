@@ -1553,7 +1553,7 @@ MonoBehaviour:
   animator: {fileID: 559320791}
   conditionalItem: {fileID: 11400000, guid: b53359de10c92ea4485f79dab1945170, type: 2}
   acionarRato: 0
-  doorToEnable: {fileID: 0}
+  doorToEnable: {fileID: 1202482255}
   uniqueInteract: 0
   interacted: 0
   iniciarEvento:
@@ -1606,7 +1606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chave: {fileID: 11400000, guid: b53359de10c92ea4485f79dab1945170, type: 2}
   objCubo: {fileID: 559320781}
-  tpCena: {fileID: 0}
+  tpCena: {fileID: 1202482255}
 --- !u!95 &559320791
 Animator:
   serializedVersion: 5
